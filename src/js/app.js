@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let contactForm = document.forms['contactForm'];
 
-  // if (contactForm.addEventListener){
-  //   contactForm.addEventListener("submit", callback, false);
-  // } else if(contactForm.attachEvent){
-  //   contactForm.attachEvent('onsubmit', callback);
-  // }
+  if (contactForm.addEventListener){
+    contactForm.addEventListener("submit", callback, false);
+  } else if(contactForm.attachEvent){
+    contactForm.attachEvent('onsubmit', callback);
+  }
 
   const sweetScroll = new SweetScroll({/* some options */});
 
