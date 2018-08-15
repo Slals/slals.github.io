@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+
 body {
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ body {
 article, aside, figcaption, figure, footer, header, nav, section {
     display: block;
 }
-h1, h2, h3, h4, stong {
+h1, h2, h3, h4 {
     margin-top: 1em;
     padding-top: 1em;
     line-height: 1.25;
@@ -41,4 +42,42 @@ a img {
 }
 sup, sub {
     line-height: 0;
+}
+p strong {
+  font-weight: bold;
+  color: #000;
+}
+
+.showoff-button {
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+  width: 125px;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: #FFF;
+  padding: 17px;
+  text-decoration: none;
+  border: 1px solid #FFF;
+  border-radius: 60px;
+  background-color: transparent;
+  outline: none;
+
+  transition-property: box-shadow, transform;
+  transition-duration: 0.33s;
+  &.dark {
+    color: #000;
+    border-color: #000;
+  }
+  &.fill {
+    background-color: #000;
+  }
+  &:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 1px #eee;
+  }
+  &:active {
+    transform: translate(0, 0);
+    box-shadow: inset 0 0 7px #ccc;
+  }
 }

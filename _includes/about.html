@@ -1,30 +1,97 @@
- <div class="user-details">
-  <h1> My Expertise </h1>
-  <p> {{site.user_description}} </p>
+ <div class="service-details">
+  <h1>Mes services</h1>
 </div>
-  <div class="user">
-    <div class="tech">
-      <h2>Design</h2>
-      <i class="devicon-html5-plain-wordmark"></i>
-      <i class="devicon-bootstrap-plain-wordmark colored"></i>
-      <i class="devicon-sass-original colored"></i>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+
+<div class="services-container">
+  <div class="services">
+    <div class="service">
+      <h2>Programmation</h2>
+      <i class="icon fa fa-terminal" aria-hidden="true"></i>
+      <p>Vous voulez <strong>concrétiser une idée</strong> sous forme de <strong>site web</strong>; d'<strong>application mobile</strong> ou d'<strong>application bureau</strong>. Vous voulez <strong>mettre à jour</strong> votre <strong>site web</strong> ou <strong>application</strong>.</p>
+      <button class="showoff-button dark" data-value="dev" onclick="onServiceBtn(this)">Voir mes services</button>
     </div>
-    <div class="tech">
-      <h2>Code</h2>
-      <i class="devicon-javascript-plain colored"></i>
-      <i class="devicon-react-original-wordmark colored"></i>
-      <i class="devicon-nodejs-plain-wordmark"></i>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+    <div class="service">
+      <h2>Conseils</h2>
+      <i class="icon fa fa-comments" aria-hidden="true"></i>
+      <p>Vous projettez de réaliser une <strong>transition numérique</strong> dans l'objectif d'<strong>améliorer vos services</strong>. Vous cherchez à définir une stratégie de <strong>gestion de projets</strong> informatiques.</p>
+      <button class="showoff-button dark" data-value="consult" onclick="onServiceBtn(this)">Voir mes services</button>
     </div>
-    <div class="tech">
-      <h2>Tools</h2>
-      <i class="devicon-git-plain"></i>
-      <i class="devicon-gulp-plain colored"></i>
-      <i class="devicon-atom-original-wordmark"></i>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+    <div class="service">
+      <h2>Formation</h2>
+      <i class="icon fa fa-graduation-cap" aria-hidden="true"></i>
+      <p>Vous voulez <strong>former vos collaborateurs</strong> sur les nouvelles technologies informatiques. Vous voulez <strong>apprendre à développer</strong> afin de réaliser vous même vos projets.</p>
+      <button class="showoff-button dark" data-value="form" onclick="onServiceBtn(this)">Voir mes services</button>
     </div>
+  </div>
+
+  <div class="services-info hidden">
+    <div class="service-info" id="dev">
+      <h2>Programmation</h2>
+      <div>
+        <div class="info-left">
+          <i class="devicon-go-line colored"></i>
+          <i class="devicon-laravel-plain-wordmark colored"></i>
+          <i class="devicon-nodejs-plain-wordmark"></i>
+          <i class="devicon-angularjs-plain colored"></i>
+          <i class="devicon-vuejs-plain-wordmark colored"></i>
+          <i class="devicon-docker-plain-wordmark colored"></i>
+          <i class="devicon-java-wordmark colored"></i>
+          <i class="devicon-android-plain-wordmark colored"></i>
+          <i class="devicon-apple-original colored"></i>
+          <i class="legend">Liste non exhaustive des technologies que je connais bien</i>
+        </div>
+        <div class="info-right">
+          <p>
+            Je mène <strong>votre projet jusqu'à sa réalisation</strong> : allant du choix des technologies en passant par le <strong>développement</strong> jusqu'à sa mise en production prêt à fonctionner. J'ai de l'expérience autant dans le <strong>développement de sites web</strong>; d'<strong>applications de bureau</strong>; de <strong>scripts</strong> ou d'<strong>applications mobiles</strong>.
+          </p>
+          <p>
+            Je réponds éventuellement aux petites missions telles que des <strong>mises à jour sur votre site</strong>, <strong>application mobile</strong> ou <strong>application de bureau</strong>.
+          </p>
+          <p>
+            Si vous n'êtes pas sûr(e) de comment <strong>donner vie à vos idées</strong>, n'hésitez pas à me <a href="#contact" data-scroll>contacter pour en discuter</a>, <a href="https://www.youtube.com/watch?v=QuoKNZjr8_U" target="_blank">je suis expérimenté en la matière</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="service-info" id="consult">
+      <h2>Conseils techniques</h2>
+      <p>
+        <i class="icon fa fa-comments" aria-hidden="true"></i> J'<strong>analyse vos besoins</strong> et je <strong>détermine une stratégie</strong> pour <strong>mener à bien vos projets</strong>. L'analyse se fait dans le cadre d'une <strong>collaboration</strong> entre moi, vous, vos collaborateurs et les différents acteurs rattachés par le projet. Au terme de cette étape d'analyse je dresse un <strong>rapport détaillé</strong> au sujet des solutions que je précaunise et/ou je rédige un <strong>cahier des charges</strong>. Je participe à la <strong>conception du projet</strong> selon vos besoins.
+      </p>
+      <p>
+        <i class="icon fa fa-edit" aria-hidden="true"></i> Je définis une stratégie de <strong>gestion de projets informatiques</strong> sur-mesure en fonction de vos besoins, de vos moyens et des compétences de vos collaborateurs.
+      </p>
+      <p>
+        <i class="icon fa fa-clipboard" aria-hidden="true"></i> Je réalise un <strong>audit logiciel</strong> de l'existant afin de <strong>confectionner une documentation</strong> pour vos collaborateurs et futurs collaborateurs, et propose une formation à l'issue.
+      </p>
+    </div>
+    <div class="service-info" id="form">
+      <h2>Formation en programmation</h2>
+      <div class="info-left">
+        <i class="devicon-html5-plain-wordmark colored"></i>
+        <i class="devicon-css3-plain-wordmark colored"></i>
+        <i class="devicon-javascript-plain colored"></i>
+        <i class="devicon-git-plain-wordmark colored"></i>
+        <i class="devicon-amazonwebservices-original colored"></i>
+        <i class="devicon-docker-plain colored"></i>
+        <i class="legend">Liste non exhaustive des technologies pour lesquelles je forme</i>
+      </div>
+      <div class="info-right">
+        <p>
+          Je vous <strong>forme</strong> vous et/ou vos collaborateurs sur des nouvelles technologies relatives à la <strong>programmation</strong> : frontend, backend, fullstack et devops.
+        </p>
+        <p>
+          Je détermine vos besoins et produis une <strong>formation sur-mesure</strong>. La <strong>formation</strong> se déroule en <strong>présentiel</strong> dans vos locaux ou via <strong>visioconférence</strong>.
+        </p>
+        <p>
+          Si vous êtes un particulier qui a soif d'apprendre n'hésitez pas à me <a href="#contact" data-scroll>contacter</a>.
+        </p>
+        <p>
+          <a class="link" href="https://www.youtube.com/watch?v=9MTHi-WjXkc" target="_blank">Voici en aperçu sur ma manière de faire en vidéo</a>.
+        </p>
+      </div>
+    </div>
+    <button class="showoff-button fill btn-interested" onclick="onServiceIntBtn(this)">Je suis intéressé(e)</button>
+    <button class="showoff-button dark" onclick="onServiceBtn(this)">Voir d'autres services</button>
+  </div>
 </div>

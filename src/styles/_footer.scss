@@ -1,21 +1,32 @@
 .footer {
   background: $main;
   padding: 10px 0;
-  margin-top: 100px;
   text-align: center;
   color: #FFF;
-  .love {
-    color: red;
-  }
-  a {
-    text-decoration: none;
-    margin: 0;
-    color: #FFF;
-    &:hover{
-      color: $sec;
-    }
-    &:active {
-      color: $sec;
+
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    .icon {
+      text-align: center;
+      color: #FFF;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 50%;
+      border: 2px solid #FFF;
+      transition: all .7s;
+      &:hover {
+        color: $main;
+        background: #FFF;
+      }
+      &:active {
+        color: $main;
+        background: #FFF;
+      }
     }
   }
 }

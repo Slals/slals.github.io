@@ -1,0 +1,28 @@
+<div class="contact-form">
+  <img class="profile-img" src="{{ "assets/img/prof_moi_500.png" }}" alt="Jonathan Serra" />
+  <a href="#" data-toggled="true" onclick="toggleAbout(this, event)">
+    <i class="fa fa-comment profile-icon" id="showAbout" aria-hidden="true"></i>
+    <i class="fa fa-times-circle profile-icon contact-hidden" id="hideAbout" aria-hidden="true"></i>
+  </a>
+  <div class="about-me contact-hidden" id="aboutMe">
+    <p>Bonjour,</p>
+    <p>
+      Je suis Jonathan Serra, je suis par ma formation ingénieur logiciel mais avant tout je suis passionné par l'informatique. Au cours de ma carrière j'ai développé un esprit d'analyse et de communication permettant de concilier mes compétences techniques avec l'écoute des besoins réels de mes clients et collaborateurs.
+    </p>
+    <p>
+      Je m'assure toujours d'avoir une communication ouverte et intelligible en adaptant mon discours selon les domaines d'expertise de mes interlocateurs. Avec moi pas de discussions verbeuses où il faut se munir d'encyclopédies spécialisées, je privilégie la clarté et la communication efficace, c'est pour moi l'origine de la réussite d'un projet.
+    </p>
+    <p>
+      N'hésitez pas à me contacter avec le formulaire juste en dessous pour la moindre question.
+    </p>
+  </div>
+  <h1>Me contacter</h1>
+  <form name="contactForm">
+    <input type="email" name="email" placeholder="Votre adresse email" required>
+    <textarea name="message" placeholder="Votre message" rows="5"></textarea>
+    <i id="filledMessage">J'ai pré-remplie le formulaire pour vous, renseignez votre adresse email et envoyez</i>
+    <div id="sendContact">
+      <input type="submit" class="showoff-button" value="Envoyer">
+    </div>
+  </form>
+</div>

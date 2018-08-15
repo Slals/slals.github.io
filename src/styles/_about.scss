@@ -1,33 +1,104 @@
-#about {
+#services {
   width: 90%;
   margin: 0 auto;
   max-width: 960px;
+  min-height: 700px;
+  padding-bottom: 75px;
   @media only screen and (min-width: $cut) {
     width: 80%;
   }
 }
 
-.tech {
-  margin: 10px;
+.services-container {
+  position: relative;
+  perspective: 1000px;
+  .services, .services-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    text-align: center;
+    font-size: 60px;
+    z-index: 2;
+
+    transition-property: transform, visibility, opacity, box-shadow, background-color;
+    transition-duration: 0.75s;
+
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    p {
+      font-size: 16px;
+    }
+    .showoff-button {
+      display: block;
+      width: auto;
+    }
+  }
+  .services-info {
+    transform: rotateY(360deg);
+  }
+  .services {
+    .showoff-button {
+      margin: 0 auto;
+    }
+    @media only screen and (min-width: $cut) {
+      flex-wrap: nowrap;
+      font-size: 75px;
+    }
+  }
 }
 
-.user {
-  text-align: center;
-  font-size: 60px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  p {
-    font-size: 16px;
+.hidden {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  backface-visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+
+  -webkit-transform: rotateY(180deg) !important;
+  transform: rotateY(180deg) !important;
+
+  opacity: 0;
+}
+
+#dev, #consult, #form {
+  display: none;
+}
+
+.services-info[data-value='dev'] #dev,
+.services-info[data-value='consult'] #consult,
+.services-info[data-value='form'] #form {
+  display: block;
+}
+.services-info {
+  .service-info {
+    width: 100%;
+    .icon {
+      font-size: 32px;
+      padding: 5px;
+    }
+    .info-left {
+      @media only screen and (min-width: $cut) {
+        float: left;
+        width: 33%;
+        margin-right: 15px;
+      }
+    }
+    p {
+      font-size: 16px;
+      text-align: left;
+    }
+    i.legend {
+      display: block;
+      font-size: 12px;
+    }
   }
-  @media only screen and (min-width: $cut) {
-    flex-wrap: nowrap;
-    font-size: 75px;
+  .showoff-button {
+    margin-top: 10px;
   }
 }
 
-.user-details {
+.service-details {
   text-align: center;
   margin: 5px auto;
 }

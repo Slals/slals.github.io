@@ -1,0 +1,144 @@
+#contact {
+  background-color: $main;
+  padding-bottom: 50px;
+  margin-bottom: -1px;
+  .contact-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    @media only screen and (min-width: $cut) {
+      width: 80%;
+    }
+    h1, .profile-img {
+      display: inline-block;
+    }
+    .profile-img {
+      display: block;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      width: 125px;
+      height: auto;
+      border-radius: 50%;
+
+      transform: translateX(-50%);
+      @media only screen and (min-width: $cut) {
+        width: 155px;
+        left: 125px;
+      }
+    }
+    .profile-icon {
+      display: none;
+      position: absolute;
+      font-size: 55px;
+      text-align: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      padding: 20px;
+      top: -60px;
+      left: 50%;
+      z-index: 2;
+      color: #FFF;
+
+      transition-property: opacity;
+      transition-duration: .10s;
+      &#showAbout {
+        background-color: $blue;
+        animation: 2.5s infinite beat;
+        animation-direction: alternate;
+      }
+      &#hideAbout {
+        background-color: $red;
+      }
+      &.contact-hidden {
+        pointer-events: none;
+        opacity: 0;
+      }
+      @media only screen and (min-width: $cut) {
+        display: block;
+        left: 160px;
+      }
+    }
+    .about-me {
+      z-index: 1;
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 9px;
+      pointer-events: none;
+      p {
+        color: #FFF;
+      }
+
+      @media only screen and (min-width: $cut) {
+        position: absolute;
+        top: 10px;
+        left: 215px;
+        width: 75%;
+        margin-top: 0;
+        background-color: white;
+
+        transition-property: transform, opacity;
+        transition-duration: 0.45s;
+        transition-timing-function: ease-out;
+
+        transform-origin: top left;
+        &.contact-hidden {
+          opacity: 0;
+          transform: rotateZ(-90deg);
+        }
+        p {
+          color: $main;
+        }
+      }
+    }
+    h1 {
+      color: #FFF;
+      text-align: center;
+    }
+    p.success {
+      color: #FFF;
+    }
+    input[type=email], textarea {
+      font-family: 'Montserrat', sans-serif;
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      padding-right: 0;
+      color: #FFF;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid white;
+      &::placeholder {
+        color: #bbb;
+      }
+      outline-color: #eee;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .showoff-button {
+      background-color: transparent;
+      margin: 0;
+      margin-top: 30px;
+    }
+  }
+  #filledMessage {
+    display: none;
+    color: #CCC;
+  }
+}
+
+@keyframes beat {
+  70%, 100% {
+    transform: scale(1.2);
+  }
+  0%, 70% {
+    transform: scale(1);
+  }
+}

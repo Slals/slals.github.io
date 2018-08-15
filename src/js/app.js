@@ -1,5 +1,29 @@
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
+
+  let callback = function (e) {
+    e.preventDefault();
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.querySelector('#sendContact').innerHTML = '<p class="success">Votre message a bien été envoyé, je vous répondrais dans les plus brefs délais.</p>';
+      }
+    };
+
+    xmlhttp.open("POST", "https://formspree.io/jonathan@cryptoblocs.fr");
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message: contactForm['message'].value }));
+  }
+
+  let contactForm = document.forms['contactForm'];
+
+  if (contactForm.addEventListener){
+    contactForm.addEventListener("submit", callback, false);
+  } else if(contactForm.attachEvent){
+    contactForm.attachEvent('onsubmit', callback);
+  }
+
   const sweetScroll = new SweetScroll({/* some options */});
 
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -114,5 +138,79 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     "retina_detect": true
   });
-
 }, false);
+
+function onServiceBtn(btn) {
+  let btnValue = btn.dataset.value;
+
+  let services = document.querySelector('.services');
+  let serviceInfo = document.querySelector('.services-info');
+
+  window.location.href = '#services';
+
+  if (!btnValue) {
+    services.classList.remove('hidden');
+    serviceInfo.classList.add('hidden');
+    return;
+  }
+
+  services.classList.add('hidden');
+  serviceInfo.classList.remove('hidden');
+
+  serviceInfo.dataset.value = btnValue;
+  document.querySelector('.btn-interested').dataset.value = btnValue;
+}
+
+function onServiceIntBtn(btn) {
+  let btnValue = btn.dataset.value;
+
+  let contactForm = document.forms['contactForm'];
+
+  let interestedIn = '';
+
+  switch (btnValue) {
+    case 'dev':
+      interestedIn = 'développement';
+      break;
+    case 'consult':
+      interestedIn = 'conseils techniques';
+      break;
+    case 'form':
+      interestedIn = 'formation en programmation';
+      break;
+  }
+
+  if (interestedIn == '') {
+    return;
+  }
+
+  contactForm['message'].value = `Bonjour,\n\nPouvons-nous échanger au sujet de votre service de ${interestedIn} ?\n\nVeuillez me joindre au ...`;
+
+  document.querySelector('#filledMessage').style.display = 'block';
+
+  window.location.href = '#contact';
+
+  contactForm['email'].focus();
+}
+
+function toggleAbout(el, e) {
+  e.preventDefault();
+  let isToggled = el.dataset.toggled;
+
+  let btnHide = document.querySelector('#hideAbout');
+  let btnShow = document.querySelector('#showAbout');
+
+  let about = document.querySelector('#aboutMe');
+
+  if (isToggled == 'true') {
+    btnHide.classList.remove('contact-hidden');
+    btnShow.classList.add('contact-hidden');
+    about.classList.remove('contact-hidden');
+    el.dataset.toggled = 'false';
+  } else {
+    btnShow.classList.remove('contact-hidden');
+    btnHide.classList.add('contact-hidden');
+    about.classList.add('contact-hidden');
+    el.dataset.toggled = 'true';
+  }
+}
