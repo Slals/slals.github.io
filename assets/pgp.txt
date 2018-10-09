@@ -1,0 +1,20 @@
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: ID utilisateur:	Cryptoblocs <jonathan@cryptoblocs.fr>
+Comment: Cree:	09/10/2018 22:25
+Comment: Expire:	09/10/2025 12:00
+Comment: Type:	256-bit EdDSA (certificat secret disponible)
+Comment: Utilisation:	Signature, Chiffrement, Certification des identifiants utilisateur
+Comment: Empreinte:	744CAAA42AF2F6903358FD1DF2AD4A03047209C2
+
+
+mDMEW70OnxYJKwYBBAHaRw8BAQdAyhsw9DjGI5CkaUgWCprP5aE7GiKoNdtOcVZ1
+XXbLGVO0JUNyeXB0b2Jsb2NzIDxqb25hdGhhbkBjcnlwdG9ibG9jcy5mcj6IlgQT
+FggAPhYhBHRMqqQq8vaQM1j9HfKtSgMEcgnCBQJbvQ6fAhsDBQkNKnkBBQsJCAcC
+BhUKCQgLAgQWAgMBAh4BAheAAAoJEPKtSgMEcgnC8DkA/itWNdaE1Tfxys6dE6UO
+kd08HlcfZ+T5RS5esJFqYw02APwOYOmX2ECc4gDGas4CzctTttAHOMvImNeVrJfP
+gTgEAbg4BFu9Dp8SCisGAQQBl1UBBQEBB0BrCENgtZxdbI5JTB0zKrfmsECrzy5N
+NvJdLsxtcAQFBgMBCAeIfgQYFggAJhYhBHRMqqQq8vaQM1j9HfKtSgMEcgnCBQJb
+vQ6fAhsMBQkNKnkBAAoJEPKtSgMEcgnCcGsBAOXOtrDNweQQu2ENfXwLCVOOs1GW
+49iGQLUFAFj85qM3AP4hCZ3Y9253TDUoWYw8y09i7D6p4JptTOMlNXmGv+iZAg==
+=FnTq
+-----END PGP PUBLIC KEY BLOCK-----
