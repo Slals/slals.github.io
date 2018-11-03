@@ -155,8 +155,7 @@
   "1hourbtc.pw": {
     "source": "http://www.badbitcoin.org/"
   },
-
   "crypto-analyse.com": {
     "source": "https://cryptonomic.network/news/crypto-analayse-en-pleine-deroute/"
-  },
+  }
 }
