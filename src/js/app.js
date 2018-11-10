@@ -1,8 +1,26 @@
+---
+---
+
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
 
   let callback = function (e) {
     e.preventDefault();
+
+    var message = contactForm['message'].value;
+
+    if (contactForm['doesEncrypt'].checked) {
+      const params = {
+        msg: message,
+        encrypt_for: window.PGP,
+      };
+
+      kbpgp.box(params, function(err, resString, resBuffer) {
+        if (!err) {
+          message = resString;
+        }
+      });
+    }
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -13,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     xmlhttp.open("POST", "https://formspree.io/jonathan@cryptoblocs.fr");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message: contactForm['message'].value }));
+    xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message }));
   }
 
   let contactForm = document.forms['contactForm'];
@@ -25,6 +43,37 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const sweetScroll = new SweetScroll({/* some options */});
+
+  var pgpKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: ID utilisateur:	Blocs <jonathan@cryptoblocs.fr>
+Comment: Cree:	24/10/2018 21:49
+Comment: Expire:	24/10/2020 12:00
+Comment: Type:	256-bit ECDSA (certificat secret disponible)
+Comment: Utilisation:	Signature, Chiffrement, Certification des identifiants utilisateur
+Comment: Empreinte:	41E642CD5DFC675B0CE0B787E61D62D0B401ADC9
+
+
+mFIEW9DM1xMIKoZIzj0DAQcCAwTfKgSlEX5Emew5wq+m7qtN8+GzFKjaEdb4ePtT
+EWkYfTHtJUsM2NGvdfwZ5xpznlu2wnJEoehMsBPFjfTpm3G/tB9CbG9jcyA8am9u
+YXRoYW5AY3J5cHRvYmxvY3MuZnI+iJYEExMIAD4WIQRB5kLNXfxnWwzgt4fmHWLQ
+tAGtyQUCW9DM1wIbAwUJA8MuSQULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRDm
+HWLQtAGtybB1AP0VJEo3ZlDDJDR038xjexfm2zztwYqOS2fBMdfFbv/l8gEAto7Z
+jluirB7cQxWrBvKC++CXSDnbPXLoabBFX0B0EQC4VgRb0MzXEggqhkjOPQMBBwID
+BIp2k+Z3gT1QX/do+Vu5Uk20qc7L/Ag0/4wwJ2J5KcEHKwdkreIsVQ7yNPSpWFWt
+6V9mmQssQY8V/pijeiEiL30DAQgHiH4EGBMIACYWIQRB5kLNXfxnWwzgt4fmHWLQ
+tAGtyQUCW9DM1wIbDAUJA8MuSQAKCRDmHWLQtAGtyZInAQCGL1OKkAE2TRpiEhQl
+N8iDVdSXhuLsRUlA5uaMVL3VJAEAweNQdYB+n/S9fSRQQ2Uotn4hygRDOuXqAm/A
+X6E2M+0=
+=cNwi
+-----END PGP PUBLIC KEY BLOCK-----`;
+
+  kbpgp.KeyManager.import_from_armored_pgp({
+    armored: pgpKey
+  }, function(err, cryptoblocs) {
+    if (!err) {
+      window.PGP = cryptoblocs;
+    }
+  });
 
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS('particles-js', {
@@ -173,7 +222,7 @@ function onServiceIntBtn(btn) {
       interestedIn = 'développement';
       break;
     case 'consult':
-      interestedIn = 'conseils techniques';
+      interestedIn = 'conseils fonctionnels et techniques';
       break;
     case 'form':
       interestedIn = 'formation en programmation';

@@ -100,6 +100,18 @@
       color: #FFF;
       text-align: center;
     }
+    #pgp {
+      margin-bottom: 15px;
+    }
+    #pgp span {
+      color: #FFF;
+      padding: 0 10px;
+    }
+    #pgp i {
+      display: block;
+      font-size: 15px;
+      color: #DDD;
+    }
     p.success {
       color: #FFF;
     }
@@ -118,6 +130,9 @@
         color: #bbb;
       }
       outline-color: #eee;
+    }
+    input[type=checkbox] {
+      height: 16px;
     }
     textarea {
       resize: vertical;

@@ -13,14 +13,19 @@
       Je m'assure toujours d'avoir une communication ouverte et intelligible en adaptant mon discours selon les domaines d'expertise de mes interlocateurs. Avec moi pas de discussions verbeuses où il faut se munir d'encyclopédies spécialisées, je privilégie la clarté et la communication efficace, c'est pour moi l'origine de la réussite d'un projet.
     </p>
     <p>
-      N'hésitez pas à me contacter avec le formulaire juste en dessous pour la moindre question.
+      N'hésitez pas à me contacter avec le formulaire juste en dessous.
     </p>
   </div>
   <h1>Me contacter</h1>
   <form name="contactForm">
     <input type="email" name="email" placeholder="Votre adresse email" required>
     <textarea name="message" placeholder="Votre message" rows="5"></textarea>
-    <a href="/assets/pgp.txt" class="link" target="_blank">Crypter avec PGP</a>
+
+    <div id="pgp">
+      <input type="checkbox" name="doesEncrypt" checked />
+      <span>Chiffrer le message avec PGP</span>
+      <i>(En cochant la case votre message sera automatiquement chiffré avec <a href="/assets/pgp.txt" class="link" target="_blank">ma clé publique</a>)</i>
+    </div>
     <i id="filledMessage">J'ai pré-remplie le formulaire pour vous, renseignez votre adresse email et envoyez</i>
     <div id="sendContact">
       <input type="submit" class="showoff-button" value="Envoyer">
