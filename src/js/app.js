@@ -7,7 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
   let callback = function (e) {
     e.preventDefault();
 
-    var message = contactForm['message'].value;
+    const message = contactForm['message'].value;
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.querySelector('#sendContact').innerHTML =
+        '<p class="success">Votre message a bien été envoyé, je vous répondrais dans les plus brefs délais.</p>';
+      }
+    };
+
+    xmlhttp.open("POST", "https://formspree.io/jonathan@cryptoblocs.fr");
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
 
     if (contactForm['doesEncrypt'].checked) {
       const params = {
@@ -17,21 +28,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       kbpgp.box(params, function(err, resString, resBuffer) {
         if (!err) {
-          message = resString;
+          xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message: resString }));
+        } else {
+          document.querySelector('#sendContact').innerHTML =
+            '<p class="error">Echec lors du chiffrement du message, ce message n\'a pas été envoyé</p>';
         }
       });
+    } else {
+      xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message }));
     }
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.querySelector('#sendContact').innerHTML = '<p class="success">Votre message a bien été envoyé, je vous répondrais dans les plus brefs délais.</p>';
-      }
-    };
-
-    xmlhttp.open("POST", "https://formspree.io/jonathan@cryptoblocs.fr");
-    xmlhttp.setRequestHeader("Content-Type", "application/json");
-    xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message }));
   }
 
   let contactForm = document.forms['contactForm'];

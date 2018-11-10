@@ -115,6 +115,9 @@
     p.success {
       color: #FFF;
     }
+    p.error {
+      color: $red;
+    }
     input[type=email], textarea {
       font-family: 'Montserrat', sans-serif;
       display: block;
