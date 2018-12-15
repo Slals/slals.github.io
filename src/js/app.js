@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var pgpKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: ID utilisateur:	Cryptoblocs <jonathan@cryptoblocs.fr>
-Comment: Créé:	08/12/2018 09:17
+Comment: Cree:	08/12/2018 09:17
 Comment: Expire:	08/12/2020 12:00
 Comment: Type:	256-bit ECDSA (certificat secret disponible)
 Comment: Utilisation:	Signature, Chiffrement, Certification des identifiants utilisateur
@@ -74,6 +74,7 @@ rLa1V7hYmf/3R0dKARinWgrzWNH5u4Uj2XuP3mY=
   kbpgp.KeyManager.import_from_armored_pgp({
     armored: pgpKey
   }, function(err, cryptoblocs) {
+    console.log(err);
     if (!err) {
       window.PGP = cryptoblocs;
     }
