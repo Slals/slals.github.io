@@ -3,8 +3,7 @@ title: Blocs
 description: Développeur disponible en freelance
 image: /assets/img/prof_moi_500.png
 author: Jonathan Serra
-# baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+permalink: /:categories/:title
 
 # User settings
 username: Jonathan Serra
@@ -12,7 +11,12 @@ user_description: Développeur disponible en freelance
 user_title: Ingénieur logiciel
 email: jonathan@cryptoblocs.fr
 twitter_username: cryptoblocs
-github_username:  Slaals
+github_username:  Slals
+
+collections:
+  posts:
+    output: true
+    permalink: /articles/:title
 
 twitter:
   username: cryptoblocs
@@ -31,3 +35,5 @@ sass:
 
 plugins:
   - jekyll-seo-tag
+
+highlighter: rouge

@@ -6,11 +6,14 @@
 @import "lib/normalize";
 @import "lib/fontawesome";
 @import "lib/devicon";
+@import "lib/highlight";
 
 @import 'vars';
 @import 'base';
 @import 'animation';
 @import 'header';
+@import 'articles-overview';
+@import 'article';
 @import 'about';
 @import 'projects';
 @import 'contact';

@@ -1,0 +1,45 @@
+body#article {
+  background-color: $main;
+}
+
+#article {
+  section.content {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 960px;
+    min-height: 700px;
+    padding-bottom: 75px;
+    @media only screen and (min-width: $cut) {
+      width: 80%;
+    }
+  }
+  a {
+    color: $blue;
+  }
+  h1:first-of-type {
+    text-align: center;
+  }
+  p, h1, h2, h3, h4, h5, h6, ul li {
+    font-family: Helvetica;
+    color: white;
+    padding: 0;
+  }
+  ul li {
+    color: lighten($sec, 20%);
+  }
+  .highlighter-rouge {
+    background-color: $sec;
+    border-radius: 3px;
+    padding: 2px;
+  }
+  div.highlighter-rouge {
+    padding: 10px;
+    border: 1px solid darken($sec, 4%);
+  }
+  pre.highlight {
+    margin: 0;
+  }
+  code.highlighter-rouge {
+    color: darken($blue, 2%);
+  }
+}
