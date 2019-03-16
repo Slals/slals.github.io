@@ -42,4 +42,13 @@ body#article {
   code.highlighter-rouge {
     color: darken($blue, 2%);
   }
+  blockquote {
+    border-left: 4px solid $blue;
+    margin: 0;
+    padding-left: 15px;
+    margin-left: 5px;
+    p {
+      color: lighten($sec, 20%);
+    }
+  }
 }

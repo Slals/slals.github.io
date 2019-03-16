@@ -1,0 +1,17 @@
+<!-- Author : Addy Osmani (https://codepen.io/addyosmani/pen/avxmvN) -->
+{% assign cmds = include.content | split: "\" %}
+<div class="terminal">
+  <div class="fakeBar">
+    <div class="fakeMenu">
+      <div class="fakeButtons fakeClose"></div>
+      <div class="fakeButtons fakeMinimize"></div>
+      <div class="fakeButtons fakeZoom"></div>
+    </div>
+    <p class="fakeTitle">{{ include.title }}</p>
+  </div>
+  <div class="fakeScreen">
+    {% for cmd in cmds %}
+      <p class="cmd">{{ cmd }}</p>
+    {% endfor %}
+  </div>
+</div>
