@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    xmlhttp.open("POST", "https://formspree.io/jonathan@blocs.fr");
+    xmlhttp.open("POST", "https://formspree.io/jonathan@cryptoblocs.fr");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
 
     if (contactForm['doesEncrypt'].checked) {
