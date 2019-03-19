@@ -28,9 +28,9 @@ body#article {
     color: lighten($sec, 20%);
   }
   .highlighter-rouge {
-    background-color: $sec;
+    background-color: #151515;
     border-radius: 3px;
-    padding: 2px;
+    padding: 3px 6px;
   }
   div.highlighter-rouge {
     padding: 10px;
@@ -40,10 +40,12 @@ body#article {
     margin: 0;
   }
   code.highlighter-rouge {
-    color: darken($blue, 2%);
+    color: #c8102e;
+    font-size: 14px;
   }
   blockquote {
     border-left: 4px solid $blue;
+    border-radius: 2px;
     margin: 0;
     padding-left: 15px;
     margin-left: 5px;

@@ -1,5 +1,5 @@
 <!-- Author : Addy Osmani (https://codepen.io/addyosmani/pen/avxmvN) -->
-{% assign cmds = include.content | split: "\" %}
+{% assign cmds = include.commands | split: "\" %}
 <div class="terminal">
   <div class="fakeBar">
     <div class="fakeMenu">
@@ -11,7 +11,7 @@
   </div>
   <div class="fakeScreen">
     {% for cmd in cmds %}
-      <p class="cmd">{{ cmd }}</p>
+      <p class="cmd">{% if include.prompt %}<span class="prompt">{{ include.prompt }}&nbsp;</span>{% endif %}{{ cmd }}</p>
     {% endfor %}
   </div>
 </div>

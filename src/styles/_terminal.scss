@@ -66,4 +66,17 @@
     padding: 0;
     margin: 0;
   }
+  .prompt {
+    color: $blue;
+    font-weight: bold;
+  }
+
+  .term-highlight {
+    background-color: white;
+    color: #151515;
+  }
+
+  i {
+    color: #666;
+  }
 }
