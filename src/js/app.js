@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        location.href = 'https://mailthis.to/confirm';
         document.querySelector('#sendContact').innerHTML =
         '<p class="success">Votre message a bien été envoyé, je vous répondrais dans les plus brefs délais.</p>';
       }
