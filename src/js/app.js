@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    xmlhttp.open("POST", "https://mailthis.to/Jonathan");
+    xmlhttp.open("POST", "https://mailthis.to/jonathan");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
 
     if (contactForm['doesEncrypt'].checked) {
