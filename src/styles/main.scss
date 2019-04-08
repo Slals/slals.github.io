@@ -3,13 +3,14 @@
 
 @charset "utf-8";
 
+@import 'vars';
+@import 'base';
+
 @import "lib/normalize";
 @import "lib/fontawesome";
 @import "lib/devicon";
 @import "lib/highlight";
 
-@import 'vars';
-@import 'base';
 @import 'terminal';
 @import 'animation';
 @import 'header';

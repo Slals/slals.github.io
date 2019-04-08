@@ -24,6 +24,9 @@ body#article {
     color: white;
     padding: 0;
   }
+  h4 {
+    text-decoration: underline;
+  }
   ul li {
     color: lighten($sec, 20%);
   }

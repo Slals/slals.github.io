@@ -117,6 +117,68 @@ Cette étape permet d'avoir une clé RSA pour initialiser une communication chif
 
 Il existe des solutions avec interface comme {% include blank_link.html title="PuTTY" href="https://www.putty.org/" %} pour Windows. Vous devrez entrer l'adresse IP de votre Raspberry, le login `pi` et le mot de passe `raspberry`.
 
-### Sécuriser les comptes
+### Créer l'utilisateur Bitcoin
+
+Afin de protéger votre installation du mieux que possible je recommande de créer un utilisateur prévu à cet usage. Nous l'appellerons "bitcoin".
+
+{% include terminal.html title="Créer l'utilisateur bitcoin" prompt="pi@raspberrypi:~ $" commands="adduser bitcoin<br />Adding user `bitcoin' ...<br />
+Adding new group `bitcoin' (1001) ...<br />
+Adding new user `bitcoin' (1001) with group `bitcoin' ...<br />
+Creating home directory `/home/bitcoin' ...<br />
+Copying files from `/etc/skel' ...<br />
+Enter new UNIX password: <i>Mettez un mot de passe fort</i><br />
+Retype new UNIX password: <i>Confirmez votre mot de passe</i><br />
+passwd: password updated successfully<br />
+Changing the user information for bitcoin<br />
+Enter the new value, or press ENTER for the default<br />
+	Full Name []: <i>Vous pouvez laisser tous ces champs vides</i><br />
+	Room Number []:<br />
+	Work Phone []:<br />
+	Home Phone []:<br />
+	Other []:<br />
+Is the information correct? [Y/n] Y<br />
+<span class='prompt'>pi@raspberrypi:~ $ </span>su bitcoin<br />
+password:<br />
+<span class='prompt'>bitcoin@raspberrypi:~ $ </span><i>Vous êtes connecté à l'utilisateur bitcoin</i>
+" %}
+
+> Vous pouvez désormais vous connecter directement à l'utilisateur "bitcoin" avec SSH
+
+### Préparer le disque dur
+
+Nous aurons besoin de télécharger l'entièreté de la blockchain Bitcoin qui fait [250go](https://bitinfocharts.com/bitcoin/) à l'heure où j'écris ces lignes. Cela signifie que la petite carte SD du Raspberry ne peut pas mémoriser tout ça.    Nous allons faire en sorte que toutes les informations relatives à la blockchain résident dans notre disque externe.
+
+Une fois que vous avez branché votre disque dur sur votre raps, vous devriez le retrouver en tapant la commande `df -h`. Cette commande va vous lister quelque qui ressemble à ce qui suit :
+
+{% include terminal.html title="Trouver le disque dur" prompt="pi@raspberrypi:~ $" commands="df -h<br/>/dev/root        15G  4.2G  9.8G  30% /
+devtmpfs        460M     0  460M   0% /dev<br />
+tmpfs           464M     0  464M   0% /dev/shm<br />
+tmpfs           464M  6.2M  458M   2% /run<br />
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock<br />
+tmpfs           464M     0  464M   0% /sys/fs/cgroup<br />
+/dev/mmcblk0p1   44M   22M   22M  51% /boot<br />
+<span class='term-highlight'>/dev/sda        458G  249G  186G  58% /home/bitcoin/.bitcoin</span><br />
+tmpfs            93M     0   93M   0% /run/user/1001<br />
+" %}
+
+Vous devrez trouver un élément ayant la même capacité de stockage que votre disque. Mon disque fait 500go, et on le trouve sur le chemin `/dev/sda`. En général on le devine dans la mesure où c'est le seul disque ayant cette capacité. Notez ce nom quelque part, et retenez cette commande `df` qui est pratique pour gérer ses disques.
+
+#### Formater (optionnel)
+
+Votre disque dur doit maintenant être vierge (à moins que vous y avez enregistré la blockchain, dans ce cas ignorez cette étape). Tapez les commande `fdisk <votre disque>` où <votre disque> devient le nom de votre disque, dans mon exemple c'est `fdisk /dev/sda`.
+
+#### Monter le disque
+
+Enfin il faut monter le disque sur le dossier de travail de Bitcoin, on va lui préparer sa maison et son nid douillet. Monter un disque signifie que nous allons associer un répertoire à un disque, octroyant une capacité certaine à un répertoire. Et pour ce faire connectez vous à l'utilisateur que nous avions précédemment créé `su bitcoin`, puis tapez `mkdir .bitcoin`.
+
+Il ne vous reste plus qu'à taper `mount <votre disque> .bitcoin` où votre disque est le chemin trouvé avec `df`.
+
+> mkdir signifie make directory, c'est pour créer un dossier et .bitcoin est le nom du dossier. Par défaut nous travaillerons avec ce dossier pour la blockchain et les portefeuilles. Le "." est un moyen de cacher le dossier, cependant en aucun cas cela constitue une bonne sécurité.
+
+### Installer bitcoind et bitcoin-cli
+
+> C'est pour bientôt
+
+### Installer lnd
 
 > C'est pour bientôt
