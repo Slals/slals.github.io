@@ -177,7 +177,70 @@ Il ne vous reste plus qu'à taper `mount <votre disque> .bitcoin` où votre disq
 
 ### Installer bitcoind et bitcoin-cli
 
-> C'est pour bientôt
+Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bitcoin`.
+
+`bitcoind` est le système central de Bitcoin, le "d" à la fin signifie "daemon" qui désigne un service exécuté et maintenu par la machine. `bitcoin-cli` est un interface de commandes qui nous permettra d'intéragir avec le service Bitcoin. Les deux s'installent ensemble, ce qui est super !
+
+D'abord nous devons chercher les fichiers d'installation de Bitcoin, je vous le donne ici : https://bitcoincore.org/bin/bitcoin-core-0.17.1/bitcoin-0.17.1-aarch64-linux-gnu.tar.gz. Gardez ce lien vous en aurez besoin.
+
+Je tiens à souligner que vous pouvez le chercher par vous même en vous rendant [ici](https://bitcoincore.org/en/download/) et en sélectionnant "ARM Linux 64bits". Je vous conseille de le faire vous même car les versions sont mises à jours, ci-dessus vous avez la version 0.17.1 de Bitcoin Core.
+
+Suivez les commandes ci-dessous pour installer `bitcoind`
+
+{% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoincore.org/bin/bitcoin-core-0.17.1/bitcoin-0.17.1-aarch64-linux-gnu.tar.gz\\
+tar -vxf bitcoin-0.17.1-aarch64-linux-gnu.tar.gz <i>Extraire les données de l'archive</i>\\
+sudo install -m 0755 -o bitcoin -g bitcoin -t /user/local/bin bitcoin-0.17.1/bin/*\\
+rm -rf bitcoin-0.17.1" %}
+
+Notez qu'on donne les droits uniquement à l'utilisateur `bitcoin`. Désormais tapez les commandes `bitcoind -version` et `bitcoin-cli -version`. Si tout est bien installé vous verrez les versions s'afficher.
+
+### Démarrer bitcoind
+
+`bitcoind` est installé, il reste plus qu'à le démarrer pour qu'il puisse télécharger frénétiquement la blockchain en se connectant à des noeuds du réseau; automatiquement.
+
+D'abord je vous recommande de vérifier si vous avez bien connecté votre disque dur, suivez l'exemple ci-dessous
+
+{% include terminal.html title="Vérifier le montage du disque" prompt="bitcoin@raspberrypi:~ $" commands="lsblk<br/>
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT<br />
+<span class='term-highlight'>sda           8:0    0 465.8G  0 disk /home/bitcoin/.bitcoin</span><br />
+mmcblk0     179:0    0  14.9G  0 disk<br />
+|-mmcblk0p1 179:1    0  43.8M  0 part /boot<br />
+`-mmcblk0p2 179:2    0  14.8G  0 part /<br />
+" %}
+
+On peut voir en surligné que `/home/bitcoin/.bitcoin` est bien connecté au disque ayant 465.8Go d'espace. Si vous n'avez pas cela, revenez sur la partie Monter le disque.
+
+Maintenant on peut écrire le fichier de configuration Bitcoin. Tapez `nano .bitcoin/bitcoin.conf`, cela va vous ouvrir un éditeur directement dans le terminal, ce qui vous permet d'écrire les configurations. Voilà des configurations que je recommande :
+
+```
+server=1
+daemon=1
+txindex=1
+
+rpcuser=Mettez un nom d'utilisateur
+rpcpassword=Mettez un mot de passe
+
+onlynet=ipv4
+zmqpubrawblock=tcp://127.0.0.1:28332
+zmqpubrawtx=tcp://127.0.0.1:28333
+
+dbcache=50
+maxorphantx=10
+maxmempool=50
+maxconnections=40
+maxuploadtarget=1000
+```
+Pour sauvegarder tapez CTRL + O et CTRL + X pour quitter.
+
+Et enfin tapez `sudo bitcoind` qui aura pour effet de lancer le service Bitcoin qui va rapidement commencer à télécharger la blockchain. Pour rappel cette dernière fait près de 200Go donc vous pouvez prendre une pause ici.
+
+Pour observer l'avancement tapez les commande `tail -f .bitcoin/debug.log` vous verrez des entrées qui ressemblent à ce qui suit
+
+```
+2019-04-15T22:54:29Z UpdateTip: new best=00000000000000000024f0048c611086130b387e6634d8e2617c261a0c44b6dd height=571800 version=0x20c00000 log2_work=90.545983 tx=402724776 date='2019-04-15T22:54:19Z' progress=1.000000 cache=14.5MiB(103309txo) warning='35 of last 100 blocks have unexpected version'
+```
+
+L'information qui intéresse ici est particulièrement `progress=1.000000`. Cette valeur est en réalite la progression de la synchronisation de la blockchain, 1 signifie 100%, si vous avez par exemple `progress=0.014` alors vous en êtes à 1.4%. Pour quitter le `tail` tapez CTRL + C.
 
 ### Installer lnd
 

@@ -28,7 +28,7 @@ body#article {
     text-decoration: underline;
   }
   ul li {
-    color: lighten($sec, 20%);
+    color: #FFF;
   }
   .highlighter-rouge {
     background-color: #151515;
@@ -37,10 +37,15 @@ body#article {
   }
   div.highlighter-rouge {
     padding: 10px;
-    border: 1px solid darken($sec, 4%);
+    height: 100%;
   }
   pre.highlight {
     margin: 0;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
   }
   code.highlighter-rouge {
     color: #c8102e;
