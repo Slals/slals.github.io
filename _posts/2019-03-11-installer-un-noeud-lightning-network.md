@@ -169,7 +169,7 @@ Votre disque dur doit maintenant être vierge (à moins que vous y avez enregist
 
 #### Monter le disque
 
-Enfin il faut monter le disque sur le dossier de travail de Bitcoin, on va lui préparer sa maison et son nid douillet. Monter un disque signifie que nous allons associer un répertoire à un disque, octroyant une capacité certaine à un répertoire. Et pour ce faire connectez vous à l'utilisateur que nous avions précédemment créé `su bitcoin`, puis tapez `mkdir .bitcoin`.
+Enfin il faut monter le disque sur le dossier de travail de Bitcoin, on va lui préparer sa maison et son nid douillet. Monter un disque signifie que nous allons associer un répertoire à un disque, octroyant une capacité certaine à un répertoire. Et pour ce faire connectez vous à l'utilisateur que nous avions précédemment créé `su bitcoin`, puis tapez `mkdir .bitcoin .lnd`.
 
 Il ne vous reste plus qu'à taper `mount <votre disque> .bitcoin` où votre disque est le chemin trouvé avec `df`.
 
@@ -177,7 +177,7 @@ Il ne vous reste plus qu'à taper `mount <votre disque> .bitcoin` où votre disq
 
 ### Installer bitcoind et bitcoin-cli
 
-Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bitcoin`.
+> Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bitcoin`.
 
 `bitcoind` est le système central de Bitcoin, le "d" à la fin signifie "daemon" qui désigne un service exécuté et maintenu par la machine. `bitcoin-cli` est un interface de commandes qui nous permettra d'intéragir avec le service Bitcoin. Les deux s'installent ensemble, ce qui est super !
 
@@ -189,7 +189,7 @@ Suivez les commandes ci-dessous pour installer `bitcoind`
 
 {% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoincore.org/bin/bitcoin-core-0.17.1/bitcoin-0.17.1-aarch64-linux-gnu.tar.gz\\
 tar -vxf bitcoin-0.17.1-aarch64-linux-gnu.tar.gz <i>Extraire les données de l'archive</i>\\
-sudo install -m 0755 -o bitcoin -g bitcoin -t /user/local/bin bitcoin-0.17.1/bin/*\\
+sudo install -m 0755 -o bitcoin -g bitcoin -t /user/local/bin bitcoin-0.17.1/bin/* \\
 rm -rf bitcoin-0.17.1" %}
 
 Notez qu'on donne les droits uniquement à l'utilisateur `bitcoin`. Désormais tapez les commandes `bitcoind -version` et `bitcoin-cli -version`. Si tout est bien installé vous verrez les versions s'afficher.
@@ -205,7 +205,7 @@ NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT<br />
 <span class='term-highlight'>sda           8:0    0 465.8G  0 disk /home/bitcoin/.bitcoin</span><br />
 mmcblk0     179:0    0  14.9G  0 disk<br />
 |-mmcblk0p1 179:1    0  43.8M  0 part /boot<br />
-`-mmcblk0p2 179:2    0  14.8G  0 part /<br />
+ -mmcblk0p2 179:2    0  14.8G  0 part /<br />
 " %}
 
 On peut voir en surligné que `/home/bitcoin/.bitcoin` est bien connecté au disque ayant 465.8Go d'espace. Si vous n'avez pas cela, revenez sur la partie Monter le disque.
@@ -217,8 +217,8 @@ server=1
 daemon=1
 txindex=1
 
-rpcuser=Mettez un nom d'utilisateur
-rpcpassword=Mettez un mot de passe
+rpcuser=<Mettez un nom d'utilisateur>
+rpcpassword=<Mettez un mot de passe>
 
 onlynet=ipv4
 zmqpubrawblock=tcp://127.0.0.1:28332
@@ -242,6 +242,80 @@ Pour observer l'avancement tapez les commande `tail -f .bitcoin/debug.log` vous 
 
 L'information qui intéresse ici est particulièrement `progress=1.000000`. Cette valeur est en réalite la progression de la synchronisation de la blockchain, 1 signifie 100%, si vous avez par exemple `progress=0.014` alors vous en êtes à 1.4%. Pour quitter le `tail` tapez CTRL + C.
 
-### Installer lnd
+### Installer LnD et LnCLI
 
-> C'est pour bientôt
+> Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bitcoin`.
+
+`lnd` est le service qui va transformer le RaspberryPi en un noeud Lightning Network. Il va se connecter automatiquement a l'interface de commande du service `bitcoind`. Tout comme `bitcoind` LND embarque l'interface de commandes `lncli`.
+
+La procédure pour installer LnD ressemble à l'installation de Bitcoin. La première chose à faire est de télécharger le service en vous rendant sur ce lien https://github.com/lightningnetwork/lnd/releases. Ici vous trouverez toutes les versions officielles de LND. Récupérez maintenant le lien de la dernière version "linux-armv7", voici celle que j'ai à l'heure où j'écris cet article https://github.com/lightningnetwork/lnd/releases/download/v0.6-beta/lnd-linux-armv7-v0.6-beta.tar.gz. Voici ce que vous allez faire de ce lien.
+
+Notez bien que mon exemple s'applique pour la version que j'ai envoyée : v0.6beta.
+
+{% include terminal.html title="Installer lnd et lncli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://github.com/lightningnetwork/lnd/releases/download/v0.6-beta/lnd-linux-armv7-v0.6-beta.tar.gz\\
+tar -vxf lnd-linux-armv7-v0.6-beta.tar.gz <i>Extraire les données de l'archive</i>\\
+sudo install -m 0755 -o bitcoin -g bitcoin -t /user/local/bin lnd-linux-armv7-v0.6-beta/bin/* \\
+rm -rf lnd-linux-armv7-v0.6-beta" %}
+
+Désormais tapez les commandes `lnd -version`. Si tout est bien installé vous verrez la version s'afficher.
+
+Avant de démarrer LND créez son fichier de configuration en tapant `nano .lnd/lnd.conf`. Trouvez ci-dessous une configuration que je propose, vous pouvez évidemment mettre ce que vous voulez pour certaines options.
+
+```
+[Application Options]
+debuglevel=info
+maxpendingchannels=3
+alias=<Votre Alias / pseudonyme / nom / ...>
+color=<Une couleur en hexadécimal, par exemple #F00 pour Rouge vif>
+
+nat=true
+
+[Bitcoin]
+bitcoin.active=1
+
+bitcoin.mainnet=1
+bitcoin.node=bitcoind
+
+[bitcoind]
+bitcoind.rpcuser=<Ce que vous aviez mis dans .bitcoin/bitcoin.conf rpcuser=>
+bitcoind.rpcpass=<Ce que vous aviez mis dans .bitcoin/bitcoin.conf rpcpassword=>
+bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332
+bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333
+
+[autopilot]
+autopilot.active=1
+autopilot.maxchannels=3
+autopilot.allocation=0.5
+```
+
+> "autopilot" vous intrigue peut-être. C'est un algorithme qui connecte automatiquement des noeuds présents dans le réseau décentralisé, typiquement des noeuds Bitcoin et Lightning Network. Autopilot intègre le modèle [Barabási–Albert](https://en.wikipedia.org/wiki/Barab%C3%A1si%E2%80%93Albert_model) dans l'idée de produire un réseau pair-à-pair en théorie homogène. Personnellement je l'active mais en aucun cas cela est nécessaire.
+
+### Démarrer LnD
+
+Tapez simplement `lnd` et voilà ! Votre noeud LN est en route. Il va d'abord synchroniser sa blockchain locale avec bitcoind. En attendant vous allez créer votre portefeuille. En effet LND ne va pas exploiter le portefeuille de bitcoind mais gérer le sien, cela veut dire que vous aurez un portefeuille relatif à votre noeud LN.
+
+Laissez LND tourner, ne quittez pas en faisant CTRL + C, je vous suggère d'ouvrir un nouveau terminal et vous connecter à nouveau sur `bitcoin`. Quitter votre terminal ne stoppera pas LND.
+
+Une fois de retour suivez cette procédure ci-dessous :
+
+{% include terminal.html title="Créer un portefeuille avec lncli" prompt="bitcoin@raspberrypi:~ $" commands="lncli create<br/>
+Input wallet password : <i>Mettez un mot de passe fort et écrivez le sur une feuille pour ne pas le perdre</i><br/>
+Confirm wallet password: <i>Confirmez votre mot de passe</i><br/><br/>
+Do you have an existing cipher seed mnemonic you want to user? (Enter y/n): n<br/><br/>
+Your cipher seed can optionally be encrypted.<br/>
+Input your passphrase if you wish to encrypt it (or press enter to proceed without a cipher seed passphrase): <i>Mettez un mot de passe ou pressez directement ENTRE</i><br/><br/>
+Generating fresh cipher seed...<br/><br/>
+!!!YOU MUST WRITE DOWN THIS SEED TO BE ABLE TO RESTORE THE WALLET!!!<br/><br/>
+<i>Ici lncli affiche votre seed, notez la consciencieusement sur une feuille, dans l'ordre. Cette seed (graine) est la clé à votre portefeuille; elle vous assurera de ne jamais perdre vos fonds</i><br/><br/>
+!!!YOU MUST WRITE DOWN THIS SEED TO BE ABLE TO RESTORE THE WALLET!!!<br/><br/>
+lnd successfully initialized!
+" %}
+
+TADAM ! Vous avez maintenant un tout nouveau portefeuille et LnD sera capable de fonctionner... Après avoir tapé ces commandes
+
+{% include terminal.html title="Générer une adresse" prompt="bitcoin@raspberrypi:~ $" commands="lncli unlock\\
+lncli newaddress p2wkh" %}
+
+> "lncli unlock" est important pour que LND puisse fonctionner car il aura besoin d'un accès à votre portefeuille, ce dernier est chiffré par défaut et il faut le déchiffrer un le déverrouillant.
+
+LND est maintenant prêt à fonctionner. Pour observer ce qu'il se passe tapez le commande `tail -f .lnd/debug.log`.

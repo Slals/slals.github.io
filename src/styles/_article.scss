@@ -1,20 +1,20 @@
 #headline {
   position: relative;
+  background-color: $main;
   width: 100%;
   height: 275px;
   max-height: 275px;
   overflow: hidden;
   .overlay {
     position: absolute;
-    z-index: -1;
+    z-index: 2;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
   }
   .image {
     position: absolute;
-    z-index: -2;
+    z-index: 3;
     width: 100%;
-    top: -300px;
     img {
       display: block;
       width: 100%;
@@ -22,7 +22,8 @@
     }
   }
   h1 {
-    z-index: 2;
+    position: absolute;
+    z-index: 4;
     width: 100%;
     text-align: center;
     color: #FFF;
