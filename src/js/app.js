@@ -1,9 +1,7 @@
 ---
 ---
 
-/* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
-
   let callback = function (e) {
     e.preventDefault();
 
@@ -74,7 +72,6 @@ rLa1V7hYmf/3R0dKARinWgrzWNH5u4Uj2XuP3mY=
   kbpgp.KeyManager.import_from_armored_pgp({
     armored: pgpKey
   }, function(err, cryptoblocs) {
-    console.log(err);
     if (!err) {
       window.PGP = cryptoblocs;
     }

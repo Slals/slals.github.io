@@ -2,18 +2,15 @@
 <html lang="fr">
   {% include head.html %}
   <body>
+    {% include nav.html %}
     {% include header.html %}
     <section id="services">
       {% include about.html %}
     </section>
 
-    <section id="articles-overview">
-      {% include posts.html %}
-    </section>
-
     <section id="contact">
       {% include contact.html %}
     </section>
-    {% include footer.html %}
+    {% include footer.html loadScripts="True" %}
   </body>
 </html>
