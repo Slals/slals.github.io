@@ -83,13 +83,13 @@
         background-color: white;
 
         transition-property: transform, opacity;
-        transition-duration: 0.45s;
+        transition-duration: 0.22s;
         transition-timing-function: ease-out;
 
         transform-origin: top left;
         &.contact-hidden {
-          opacity: 0;
-          transform: rotateZ(-90deg);
+          opacity: 0.4;
+          transform: scale(0);
         }
         p {
           color: $main;
