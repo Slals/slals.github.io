@@ -6,12 +6,12 @@ author: Jonathan Serra
 permalink: /:categories/:title
 
 # User settings
-username: Jonathan Serra
+username: cryptoblocs
 user_description: Directeur technique et ingénieur logiciel en freelance
 user_title: Ingénieur logiciel
 email: jonathan@blocs.fr
 twitter_username: cryptoblocs
-github_username:  Slals
+github_username: Slals
 
 collections:
   posts:
