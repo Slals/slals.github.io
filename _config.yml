@@ -1,17 +1,17 @@
 # Site settings
-title: Blocs
+title: Blocs.fr
 description: Directeur technique et ingénieur logiciel en freelance
 image: /assets/img/prof_moi_500.png
 author: Jonathan Serra
 permalink: /:categories/:title
 
 # User settings
-username: Jonathan Serra
+username: Blocs
 user_description: Directeur technique et ingénieur logiciel en freelance
 user_title: Ingénieur logiciel
 email: jonathan@blocs.fr
 twitter_username: cryptoblocs
-github_username:  Slals
+github_username: Slals
 
 collections:
   posts:
