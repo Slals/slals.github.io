@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let callback = function (e) {
     e.preventDefault();
 
+    document.querySelector('.send-btn').classList.add('loading');
+
     const message = contactForm['message'].value;
 
     var xmlhttp = new XMLHttpRequest();

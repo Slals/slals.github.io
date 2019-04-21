@@ -10,6 +10,13 @@
     width: 90%;
     max-width: 960px;
     margin: 0 auto;
+    .send-btn.loading {
+      background-image: url('/assets/img/loader.gif');
+      background-size: 60%;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+    }
     @media only screen and (min-width: $cut) {
       width: 80%;
     }

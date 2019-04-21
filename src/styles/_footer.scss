@@ -7,8 +7,11 @@
   justify-content: center;
 
   .content {
-    width: 80%;
+    width: 90%;
     display: flex;
+    @media only screen and (min-width: $cut) {
+      width: 90%;
+    }
   }
 
   .posts {
