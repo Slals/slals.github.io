@@ -1,31 +1,49 @@
 .footer {
-  background: $main;
-  padding: 10px 0;
-  text-align: center;
-  color: #FFF;
+  background: #FFF;
+  padding: 10px 5%;
+  color: $main;
+  display: flex;
+  flex: 1;
+  min-height: 125px;
 
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    .icon {
-      text-align: center;
-      color: #FFF;
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
-      padding: 10px;
-      margin: 5px;
-      border-radius: 50%;
-      border: 2px solid #FFF;
-      transition: all .7s;
-      &:hover {
-        color: $main;
-        background: #FFF;
+  .posts {
+    flex: 1;
+    .title {
+      h1 {
+        display: inline-block;
+        margin: 0;
+        margin-right: 15px;
+        padding: 0;
       }
-      &:active {
+      .fa-rss {
+        color: #ee802f;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .socials {
+    flex: 2;
+    .footer-icons {
+      display: flex;
+      .icon {
         color: $main;
-        background: #FFF;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 50%;
+        border: 2px solid $main;
+        transition: all .33s;
+        &:hover {
+          color: #FFF;
+          background: $main;
+        }
+        &:active {
+          color: #FFF;
+          background: $main;
+        }
       }
     }
   }
