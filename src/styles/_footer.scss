@@ -1,10 +1,15 @@
 .footer {
   background: #FFF;
-  padding: 10px 5%;
+  padding: 10px;
   color: $main;
-  display: flex;
-  flex: 1;
   min-height: 125px;
+  display: flex;
+  justify-content: center;
+
+  .content {
+    width: 80%;
+    display: flex;
+  }
 
   .posts {
     flex: 1;

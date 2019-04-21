@@ -1,21 +1,23 @@
 <footer class="footer">
-  <div class="posts">
-    <div class="title">
-      <h1>Voir mes articles</h1>
-      <a aria-label="Flux RSS" target="_blank" href="/feed.xml"><i class="icon fa fa-rss" aria-hidden="true"></i></a>
+  <div class="content">
+    <div class="posts">
+      <div class="title">
+        <h1>Voir mes articles</h1>
+        <a aria-label="Flux RSS" target="_blank" href="/feed.xml"><i class="icon fa fa-rss" aria-hidden="true"></i></a>
+      </div>
+      {% for post in site.posts limit:4 %}
+        <a class="link" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+      {% endfor %}
     </div>
-    {% for post in site.posts limit:4 %}
-      <a class="link" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
-    {% endfor %}
-  </div>
-  <div class="socials">
-    <div class="footer-icons">
-      <a aria-label="Sur Twitter" target="_blank" href="https://twitter.com/{{ site.twitter_username }}"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
-      <a aria-label="Sur YouTube" target="_blank" href="https://www.youtube.com/channel/UCjvOu6faxxmqE6ZHTLR5qmw/?sub_confirmation=1"><i class="icon fa fa-youtube" aria-hidden="true"></i></a>
-      <a aria-label="Sur Github" target="_blank" href="https://github.com/Slals"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
-      <a aria-label="Sur Linkedin" target="_blank" href="https://www.linkedin.com/in/serrajonathan/"><i class="icon fa fa-linkedin" aria-hidden="true"></i></a>
+    <div class="socials">
+      <div class="footer-icons">
+        <a aria-label="Sur Twitter" target="_blank" href="https://twitter.com/{{ site.twitter_username }}"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
+        <a aria-label="Sur YouTube" target="_blank" href="https://www.youtube.com/channel/UCjvOu6faxxmqE6ZHTLR5qmw/?sub_confirmation=1"><i class="icon fa fa-youtube" aria-hidden="true"></i></a>
+        <a aria-label="Sur Github" target="_blank" href="https://github.com/Slals"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
+        <a aria-label="Sur Linkedin" target="_blank" href="https://www.linkedin.com/in/serrajonathan/"><i class="icon fa fa-linkedin" aria-hidden="true"></i></a>
+      </div>
+      <p>{{ site.username }} &copy; 2019</p>
     </div>
-    <p>{{ site.username }} &copy; 2019</p>
   </div>
 </footer>
 {% if include.loadScripts %}
