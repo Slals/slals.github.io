@@ -2,7 +2,7 @@
 layout: article
 title: "Installer un nœud Lightning Network"
 description: "Envoyer des microtransactions bitcoin n'était pas possible jusqu'à l'arrivée de la technologie Lightning Network. C'est un système qui permet de faire des transactions quasi-instantannées et avec peu de frais."
-image: "/assets/img/thumbnail/lnd.png"
+image: "/assets/img/thumbnail/lnd.jpg"
 ---
 
 Avoir son propre nœud Lightning Network (LN) permet d'avoir un grand contrôle sur les transactions au sein du réseau. Lorsque vous voulez effectuer une transaction LN vous avez deux choix :
