@@ -1,0 +1,14 @@
+{% assign items = include.sum | replace: "\\", "\" | split: "\" %}
+<div class="summary">
+  <p class="intro">
+    {{ include.intro }}
+  </p>
+  <div class="insert">
+    <h2>Sommaire</h2>
+    <div>
+      {% for i in items %}
+        {{ i }}
+      {% endfor %}
+    </div>
+  </div>
+</div>

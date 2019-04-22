@@ -3,15 +3,18 @@
   padding: 10px;
   color: $main;
   min-height: 125px;
-  display: flex;
-  justify-content: center;
-
   .content {
     width: 90%;
     display: flex;
+    margin: 0 auto;
+    max-width: 960px;
     @media only screen and (min-width: $cut) {
-      width: 90%;
+      width: 80%;
     }
+  }
+  .copyright {
+    width: 100%;
+    text-align: center;
   }
 
   .posts {
