@@ -20,9 +20,9 @@ collections:
 
 twitter:
   username: cryptoblocs
-  card: summary
+  card: summary_large_image
 
-logo: /assets/img/prof_moi_500.png
+logo: /assets/img/logo.png
 
 lang: fr-FR
 

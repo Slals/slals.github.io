@@ -6,7 +6,7 @@ image: "/assets/img/thumbnail/lnd.jpg"
 ---
 
 Avoir son propre nœud Lightning Network (LN) permet d'avoir un grand contrôle sur les transactions au sein du réseau. Lorsque vous voulez effectuer une transaction LN vous avez deux choix :
-- Dépendre d'un nœud de tier et dépendre de ses canaux de paiement ;
+- Dépendre d'un nœud de tiers et dépendre de ses canaux de paiement ;
 - Avoir son nœud et gérer ses propres canaux avec d'autres nœuds ;
 
 Il va sans dire que la deuxième solution offre plus de possibilités, alors nous allons voir dans cet article comment mettre en place tout cela.
@@ -175,7 +175,7 @@ Il ne vous reste plus qu'à taper `mount <votre disque> .bitcoin` où votre disq
 
 _Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bitcoin`._
 
-`bitcoind` est le système central de Bitcoin, le "d" à la fin signifie "daemon" qui désigne un service exécuté et maintenu par la machine. `bitcoin-cli` est une interface de commande qui permet d'intéragir avec le service Bitcoin. Les deux s'installent ensemble, ce qui est super !
+`bitcoind` est le système central de Bitcoin, le "d" à la fin signifie "daemon" qui désigne un service exécuté et maintenu par la machine. `bitcoin-cli` est une interface de commande qui permet d’interagir avec le service Bitcoin. Les deux s'installent ensemble, ce qui est super !
 
 D'abord vous devrez chercher les fichiers d'installation de Bitcoin, je vous le donne ici : [bitcoin-0.17.1-aarch64-linux-gnu.tar.gz](https://bitcoincore.org/bin/bitcoin-core-0.17.1/bitcoin-0.17.1-aarch64-linux-gnu.tar.gz). Gardez ce lien vous en aurez besoin.
 
@@ -236,13 +236,13 @@ Pour observer l'avancement tapez la commande `tail -f .bitcoin/debug.log` vous v
 2019-04-15T22:54:29Z UpdateTip: new best=00000000000000000024f0048c611086130b387e6634d8e2617c261a0c44b6dd height=571800 version=0x20c00000 log2_work=90.545983 tx=402724776 date='2019-04-15T22:54:19Z' progress=1.000000 cache=14.5MiB(103309txo) warning='35 of last 100 blocks have unexpected version'
 ```
 
-L'information intéressante ici est particulièrement `progress=1.000000`. Cette valeur est en réalite la progression de la synchronisation de la blockchain, 1 signifie 100%, si vous avez par exemple `progress=0.014` alors vous en êtes à 1.4%. Pour quitter le `tail` tapez CTRL + C.
+L'information intéressante ici est particulièrement `progress=1.000000`. Cette valeur est en réalité la progression de la synchronisation de la blockchain, 1 signifie 100%, si vous avez par exemple `progress=0.014` alors vous en êtes à 1.4%. Pour quitter le `tail` tapez CTRL + C.
 
 ## Installer LnD et LnCLI
 
 _Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bitcoin`._
 
-`lnd` est le service qui va transformer le RaspberryPi en un nœud Lightning Network. Il va se connecter automatiquement a l'interface de commande du service `bitcoind`. Tout comme `bitcoind` LND embarque l'interface de commande `lncli`.
+`lnd` est le service qui va transformer le RaspberryPi en un nœud Lightning Network. Il va se connecter automatiquement a l'interface de commande du service `bitcoind`. Tout comme `bitcoind` LnD embarque l'interface de commande `lncli`.
 
 La procédure pour installer LnD ressemble à l'installation de Bitcoin. La première chose à faire est de télécharger le service en vous rendant sur ce lien [github.com/lightningnetwork/lnd/releases](https://github.com/lightningnetwork/lnd/releases). Ici vous trouverez toutes les versions officielles de LnD. Récupérez maintenant le lien de la dernière version "linux-armv7", voici celle que j'ai à l'heure où j'écris cet article [lnd-linux-armv7-v0.6-beta.tar.gz](https://github.com/lightningnetwork/lnd/releases/download/v0.6-beta/lnd-linux-armv7-v0.6-beta.tar.gz).
 
@@ -288,7 +288,7 @@ autopilot.allocation=0.5
 
 ## Démarrer LnD
 
-Tapez simplement `lnd` et voilà ! Votre nœud LN est en route. Il va d'abord synchroniser sa blockchain locale avec bitcoind. En attendant vous allez créer votre portefeuille. En effet LND ne va pas exploiter le portefeuille de bitcoind mais gérer le sien, cela veut dire que vous aurez un portefeuille relatif à votre nœud LN.
+Tapez simplement `lnd` et voilà ! Votre nœud LN est en route. Il va d'abord synchroniser sa blockchain locale avec bitcoind. En attendant vous allez créer votre portefeuille. En effet LnD ne va pas exploiter le portefeuille de bitcoind mais gérer le sien, cela veut dire que vous aurez un portefeuille relatif à votre nœud LN.
 
 Laissez `lnd` tourner, ne quittez pas en faisant CTRL + C, je vous suggère d'ouvrir un nouveau terminal et vous connecter à nouveau sur `bitcoin`. Quitter votre terminal ne stoppera pas LnD.
 
