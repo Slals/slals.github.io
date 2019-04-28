@@ -11,9 +11,11 @@
     justify-content: center;
   }
   li.article-overview {
-    width: 375px;
+    width: 350px;
+    padding: 25px;
     img {
       width: 100%;
+      box-shadow: 7px 10px 15px rgba(10, 10, 10, 0.2);
     }
     .overview-content .title {
       font-size: 18pt;
