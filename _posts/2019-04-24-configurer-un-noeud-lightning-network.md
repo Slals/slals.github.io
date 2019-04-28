@@ -2,7 +2,8 @@
 layout: article
 title: "Configurer son nœud Bitcoin Lightning Network"
 description: "Dans l'article précédent j'ai écrit au sujet de l'installation d'un nœud Bitcoin Lightning Network avec un Raspberry Pi. Ce dernier est sommaire et va à l'essentiel. Dans cet article il va s'agir d'optimiser la configuration du Raspberry Pi afin d'améliorer sa sécurité et rendre l'administration moins laborieuse."
-image: "/assets/img/thumbnail/lnd.jpg"
+image: "/assets/img/thumbnail/conf_node_title.jpg"
+image_bg: "/assets/img/thumbnail/conf_node.jpg"
 ---
 
 {% include summary.html intro="<a href='/articles/installer-un-nœud-lightning-network' target='_blank'>Dans l'article précédent</a> j'ai écrit au sujet de l'installation d'un nœud Bitcoin Lightning Network avec un Raspberry Pi. Ce dernier est sommaire et va à l'essentiel. Dans cet article il va s'agir d'optimiser la configuration du Raspberry Pi afin d'améliorer sa sécurité et rendre l'administration moins laborieuse."
@@ -17,7 +18,7 @@ sum="<a href='#fixer-ip'>Fixer l'adresse IP locale du nœud</a>\\
 </div>"
 %}
 
-_Notez que tout ce qui va suivre devra se faire avec l'utilisateur administrateur. Pour s'y connecter tapez une fois `su root` puis tapez sont mot de passe._
+_Notez que tout ce qui va suivre devra se faire avec l'utilisateur administrateur. Pour s'y connecter tapez une fois `su root` puis tapez son mot de passe._
 
 ## <a name="fixer-ip"></a>Fixer l'adresse IP locale du nœud
 
@@ -42,17 +43,17 @@ Ici vous allez devoir faire un travail d'enquête pour connaître votre réseau 
 
 Trouvé ! `192.168.1.1` est la passerelle de mon réseau, c'est ce que vous devez mettre dans la configuration DHCP plus haut. Notez également le `/24` qui est un masque de réseau et que vous devez aussi utiliser dans votre configuration DHCP.
 
-> Sans entrer dans les détails le masque `/24` (ou `/n`) est ce qui va déterminer la plage d'adresses disponibles. Avec une adresse type `192.168.1.0/24` vous avez 254 adresses disponibles allant de `192.168.1.1` à `192.168.1.254`. C'est important à considérer car cela signifie que vous ne pouvez pas mettre n'importe quelle adresse, il est important de respecter le format. Pour être sûr de ne pas vous tromper, conservez les 3 premiers chiffres de l'IP et choisissez le dernier : `x.x.x.y` où x sont les valeurs de base de l'IP (`192.168.1` selon l'exemple) et y est une valeur choisie arbitrairement et comprise entre 1 et 254.
+> Sans entrer dans les détails le masque `/24` (ou `/n`) est ce qui va déterminer la plage d'adresses disponibles. Avec une adresse type `192.168.1.0/24` vous avez 254 adresses disponibles allant de `192.168.1.1` à `192.168.1.254`. C'est important à considérer car cela signifie que vous ne pouvez pas mettre n'importe quelle adresse, il est important de respecter le format. Pour être sûr de ne pas vous tromper, conservez les 3 premiers chiffres de l'IP et choisissez le dernier : `x.x.x.y` où "x" sont les valeurs de base de l'IP (`192.168.1` selon l'exemple) et "y" est une valeur choisie arbitrairement et comprise entre 1 et 254.
 
 Votre nœud a maintenant une IP statique.
 
 ## <a name="securiser-ssh"></a>Sécuriser les accès distants SSH
 
-SSH c'est un protocole de réseau qui vous permet de vous connecter à distance sur une machine grâce à un canal chiffré. Cela signifie que la machine distante exécute une service qui reçoit les connexions SSH, ce service s'appelle `sshd`. SSH en lui même est plutôt bien sécurisé, cependant il est possible de couvrir un peu mieux les accès.
+SSH est un protocole de réseau qui vous permet de vous connecter à distance sur une machine grâce à un canal chiffré. Cela signifie que la machine distante exécute un service qui reçoit les connexions SSH, ce service s'appelle `sshd`. SSH en lui même est plutôt bien sécurisé, cependant il est possible de couvrir un peu mieux les accès.
 
 Sans plus attendre trouvez le fichier en tapant `sudo nano /etc/ssh/sshd_config`.
 
-Voyons quelles modifications vous pouvez apporter afin de mieux sécuriser les accès SSH. Vous noterez que la plupart des lignes sont commentées grâce au caractère "#", cela signifie juste que lignes comportant ce symbole au début sont neutralisées, le travail va être essentiellement de dé-neutraliser certaines lignes.
+Voyons quelles modifications vous pouvez apporter afin de mieux sécuriser les accès SSH. Vous noterez que la plupart des lignes sont commentées grâce au caractère "#", cela signifie juste que les lignes comportant ce symbole au début sont neutralisées, le travail consiste essentiellement à dé-neutraliser certaines lignes.
 
 `Port 2310` : Mettez le port que vous souhaitez, le changer est toujours une couche de sécurité peu coûteuse. Ici j'ai mis 2310.
 
@@ -72,21 +73,21 @@ Tapez CTRL + O et CTRL + X; et enfin redémarrez SSHd afin d'appliquer ces modif
 
 ### <a name="enregistrer-cle-ssh"></a>Enregistrer votre clé pour les connexions futures
 
-Dans la configuration précédente vous aviez activé l'option PubkeyAuthentication, cette option va vous permettre d'enregistrer la clé public de votre machine sur le Raspberry. Cela vous évitera de taper sans cesse le mot de passe de connexion.
+Dans la configuration précédente vous aviez activé l'option PubkeyAuthentication, cette option va vous permettre d'enregistrer la clé publique de votre machine sur le Raspberry. Cela vous évitera de taper sans cesse le mot de passe de connexion.
 
 Cela se passe en un commande. Suivez le terminal ci-dessous. Notez que cela doit se faire depuis votre machine locale (votre mac, votre pc, etc). Si vous êtes sur Windows vous n'aurez pas cette commande.
 
 {% include terminal.html title="Enregistrer se clé publique SSH" prompt="monpc@oumonmac:~ $" commands="ssh-copy-id -i ~/.ssh/id_rsa.pub bitcoin@192.168.1.42" %}
 
-Ensuite vous devrez taper le mot de passe de l'utilisateur "bitcoin". Notez que l'IP `192.168.1.42` doit être l'IP de votre nœud distant. Cette action aura pour effet de recenser la clé publique de votre machine dans le Raspberry Pi, il vous reconnaîtra pour les connexions futures et ne vous demandera plus de mot de passe.
+Ensuite vous devrez taper le mot de passe de l'utilisateur "bitcoin". Notez que l'IP `192.168.1.42` ([comment trouver l'IP de mon nœud ?](/articles/installer-un-noeud-lightning-network#ifconfig)) doit être l'IP de votre nœud distant. Cette action aura pour effet de recenser la clé publique de votre machine dans le Raspberry Pi, il vous reconnaîtra pour les connexions futures et ne vous demandera plus de mot de passe.
 
-> Si vous êtes sur Windows en utilisant PuTTY, vous pouvez générer et trouver votre clé publique avec [PuTTyGen](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-putty/). Copiez cette clé qui commence par "ssh-rsa" si vous l'avez créé avec le chiffrement RSA. Cliquez sur "Save private key" et enregistrer le fichier sur votre machine. Revenez sur PuTTY, sur le pannel de gauche trouvez "Connection / SSH / Auth" puis dans la section "Private key file for authentication" chargez le fichier de votre clé privée, c'est un fichier .ppk. Connectez vous à votre Raspberry en utilisant PuTTy. Une fois connecté tapez `sudo nano .ssh/authorized_keys` et collez la clé publique que vous aviez copié, puis sauvegardez le fichier. C'est terminé désormais votre Raspberry connaît votre clé publique et autorisera les connexions futures depuis votre machine Windows.
+> Si vous êtes sur Windows en utilisant PuTTy, vous pouvez générer et trouver votre clé publique avec [PuTTyGen](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-putty/). Copiez cette clé qui commence par "ssh-rsa" si vous l'avez créé avec le chiffrement RSA. Cliquez sur "Save private key" et enregistrez le fichier sur votre machine. Revenez sur PuTTy, sur le panneau de gauche trouvez "Connection / SSH / Auth" puis dans la section "Private key file for authentication" chargez le fichier de votre clé privée, c'est un fichier .ppk. Connectez vous à votre Raspberry en utilisant PuTTy. Une fois connecté tapez `sudo nano .ssh/authorized_keys` et collez la clé publique que vous aviez copié, puis sauvegardez le fichier. C'est terminé désormais votre Raspberry connaît votre clé publique et autorisera les connexions futures depuis votre machine Windows.
 
 ## <a name="fail2ban"></a>Ajouter une couche supplémentaire à l'authentification SSH
 
 Pour l'instant il est toujours possible de forcer l'accès à votre nœud avec une attaque par dictionnaire, qui consiste à tester des millions de mot de passe jusqu'à trouver un accès. Il existe un service nommé `fail2ban` qui va permettre de protéger en limitant les tentatives de connexion.
 
-Pour l'installer tapez `apt-get update && apt-get install -y fail2ban`. Ensuite vous allez devoir configurer une chose si vous avez modifié le port SSH comme je l'ai montré juste au dessus. Cherchez le fichier de configuration de fail2ban `nano /etc/fail2ban/jail.d/defaults-debian.conf`. Voyez la section `[sshd]` mettez ce qui suit (si vous n'avez rien dans le fichier, ajoutez également ce qui suit) :
+Pour l'installer tapez `apt-get update && apt-get install -y fail2ban`. Ensuite vous allez devoir configurer une chose si vous avez modifié le port SSH comme je l'ai montré [juste au dessus](#securiser-ssh). Cherchez le fichier de configuration de fail2ban `nano /etc/fail2ban/jail.d/defaults-debian.conf`. Voyez la section `[sshd]` mettez ce qui suit (si vous n'avez rien dans le fichier, ajoutez également ce qui suit) :
 
 ```
 [sshd]
@@ -96,13 +97,13 @@ port    = 2310 # Notez que c'est le port que j'ai mis plus haut dans sshd_config
 
 Sauvegardez en tapant CTRL + O et CTRL + X pour fermer et enfin tapez `systemctl restart fail2ban`.
 
-> fail2ban est un service polyvalent qui sécurise nombreuses authentifications, dont le service sshd et nous l'utilisons pour ça.
+> fail2ban est un service polyvalent qui sécurise nombreuse authentifications, dont le service sshd et nous l'utilisons pour ça.
 
 ## <a name="activer-redemarrage-auto-des-services"></a>Activer le redémarrage automatique du montage du disque, de bitcoind et lnd
 
-Cette partie est cruciale. Si votre Raspberry est redémarré à cause d'une coupure de courant par exemple, il redémarrera... Mais il ne relancera pas bitcoind et lnd. Ce qui aurait pour effet d'éteindre le service et vous obliger à intervenir pour qu'il persévère.
+Cette partie est cruciale. Si votre Raspberry est redémarré à cause d'une coupure de courant par exemple, il redémarrera... Mais il ne relancera pas bitcoind ni lnd. Ce qui aurait pour effet d'éteindre le service et vous obliger à intervenir pour qu'il persévère.
 
-D'abord il va falloir faire en sorte que le disque est toujours monté sur le dossier .bitcoin, car c'est ce dernier qui recense la blockchain et bitcoind en a besoin. Le montage de disque ne se fait jamais automatiquement. Alors voilà comment configurer cela :
+D'abord il va falloir faire en sorte que le disque soit toujours monté sur le dossier .bitcoin car c'est ce dernier qui recense la blockchain et bitcoind en a besoin. Le montage de disque ne se fait jamais automatiquement. Alors voilà comment configurer cela :
 
 {% include terminal.html title="Activer l'automount" prompt="pi@raspberry:~ $" commands="df -h<br />Filesystem      Size  Used Avail Use% Mounted on<br />
 /dev/root        15G  5.6G  8.4G  40% /<br />
@@ -117,11 +118,11 @@ tmpfs            93M     0   93M   0% /run/user/1001\\
 echo '/dev/sda /home/bitcoin/.bitcoin ext4 defaults,noatime 0 0' >> /etc/fstab
 " %}
 
-Soyez vigilant ici. J'ai surligné mon montage actuel qui est /dev/sda monté sur /home/bitcoin/.bitcoin, vous devez mettre ce chemin dans le `echo` en dessous. Notez également l'anotation `ext4` qui est le format de fichier que j'ai choisi lorsque j'avais formaté le disque. Si vous avez un doute suivez le terminal ci-dessous
+Soyez vigilant ici. J'ai surligné mon montage actuel qui est `/dev/sda` monté sur `/home/bitcoin/.bitcoin`, vous devez mettre ce chemin dans le `echo` en dessous. Notez également l'annotation `ext4` qui est le système de fichier que j'ai choisi lorsque j'avais formaté le disque. Si vous avez un doute suivez le terminal ci-dessous
 
-{% include terminal.html title="Activer l'automount" prompt="pi@raspberry:~ $" commands="file -sL /dev/sda<br />/dev/sda: Linux rev 1.0 <span class='term-highlight'>ext4</span> filesystem data, UUID=a2a0ec66-f768-4cf0-9442-6c2878ab60e1, volume name BLOCK-STORAGE (needs journal recovery) (extents) (64bit) (large files) (huge files)" %}
+{% include terminal.html title="Trouver le système de fichier d'un disque" prompt="pi@raspberry:~ $" commands="file -sL /dev/sda<br />/dev/sda: Linux rev 1.0 <span class='term-highlight'>ext4</span> filesystem data, UUID=a2a0ec66-f768-4cf0-9442-6c2878ab60e1, volume name BLOCK-STORAGE (needs journal recovery) (extents) (64bit) (large files) (huge files)" %}
 
-Où /dev/sda est mon disque à monter. On voit en surligné `ext4` qui est le format de fichier.
+Où `/dev/sda` est mon disque à monter. On voit en surligné `ext4` qui est le système de fichier.
 
 ### bitcoind
 

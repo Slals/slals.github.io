@@ -3,6 +3,7 @@ layout: article
 title: "Installer un nœud Lightning Network"
 description: "Envoyer des microtransactions bitcoin n'était pas possible jusqu'à l'arrivée de la technologie Lightning Network. C'est un système qui permet de faire des transactions quasi-instantannées et avec peu de frais."
 image: "/assets/img/thumbnail/lnd.jpg"
+image_bg: "/assets/img/thumbnail/lnd.jpg"
 ---
 
 {% include summary.html intro="Avoir son propre nœud Lightning Network (LN) permet d'avoir un grand contrôle sur les transactions au sein du réseau. Lorsque vous voulez effectuer une transaction LN vous avez deux choix :<br />
@@ -77,6 +78,7 @@ Votre SSH est maintenant activé.
 
 À la bonheur, vous pouvez dès maintenant vous connecter à votre Raspberry à distance, depuis un autre ordinateur. D'abord récupérez l'adresse IP de votre Raspberry vous en aurez besoin, utilisez la commande `ifconfig` pour l'afficher. Voilà un extrait de mon `ifconfig`
 
+<a name="ifconfig"></a>
 {% include terminal.html title="Trouver l'adresse IP" prompt="pi@raspberrypi:~ $" commands="ifconfig<br/>eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br/>
         inet <span class='term-highlight'>192.168.1.42</span>  netmask 255.255.255.0  broadcast 192.168.1.255<br/>
         inet6 fe80::10e0:8a76:4fe4:c3c2  prefixlen 64  scopeid 0x20<link><br/>
