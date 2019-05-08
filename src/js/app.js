@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!err) {
           xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message: resString }));
         } else {
+          console.log(err);
           document.querySelector('#sendContact').innerHTML =
             '<p class="error">Echec lors du chiffrement du message, ce message n\'a pas été envoyé</p>';
         }
@@ -54,7 +55,6 @@ Comment: ID utilisateur:	Blocs <jonathan@blocs.fr>
 Comment: Cree:	08/05/2019 20:01
 Comment: Expire:	08/05/2021 12:00
 Comment: Type:	256-bit ECDSA (certificat secret disponible)
-Comment: Utilisation:	Signature, Certification des identifiants utilisateur, Authentification SSH
 Comment: Empreinte:	ABCC30B013B8F90E989F63E17EB4649AAA0808F0
 
 
