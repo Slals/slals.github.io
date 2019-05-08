@@ -70,7 +70,6 @@ KVtpbBJQ9ZkZiCqYa2xVUjS+BhXJOOk=
   kbpgp.KeyManager.import_from_armored_pgp({
     armored: pgpKey
   }, function(err, cryptoblocs) {
-    console.log(err);
     if (!err) {
       window.PGP = cryptoblocs;
     }
