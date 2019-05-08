@@ -52,19 +52,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var pgpKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: ID utilisateur:	Blocs <jonathan@blocs.fr>
-Comment: Cree:	08/05/2019 20:01
+Comment: Cree:	08/05/2019 20:45
 Comment: Expire:	08/05/2021 12:00
-Comment: Type:	256-bit ECDSA (certificat secret disponible)
-Comment: Empreinte:	ABCC30B013B8F90E989F63E17EB4649AAA0808F0
+Comment: Type:	256-bit EdDSA (certificat secret disponible)
+Comment: Utilisation:	Signature, Chiffrement, Certification des identifiants utilisateur
+Comment: Empreinte:	F069AA02AEB2205977539F427F459CBF219E1216
 
 
-mFIEXNMZYRMIKoZIzj0DAQcCAwQn2teed8FpshWMFOsqiKgZxID+kgk27Dn45cvG
-LuboUXkwwbtrsIuShJVb7icxy/KnkiCqpABiKM89GbcSk7U9tBlCbG9jcyA8am9u
-YXRoYW5AYmxvY3MuZnI+iJYEExMIAD4WIQSrzDCwE7j5DpifY+F+tGSaqggI8AUC
-XNMZYQIbIwUJA8NHvwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRB+tGSaqggI
-8D/rAQCBYxMhn/2bZMHR1UppiRJVKn9hm8uFIwP2n725FOQ//AD9ECqwMWYt8xia
-KVtpbBJQ9ZkZiCqYa2xVUjS+BhXJOOk=
-=BsPv
+mDMEXNMjsRYJKwYBBAHaRw8BAQdALnFeQ8hK4Z7oRPTfNJaDSEvWheoxcKZNFIP6
+L807PNi0GUJsb2NzIDxqb25hdGhhbkBibG9jcy5mcj6IlgQTFggAPhYhBPBpqgKu
+siBZd1OfQn9FnL8hnhIWBQJc0yOxAhsDBQkDwz1vBQsJCAcCBhUKCQgLAgQWAgMB
+Ah4BAheAAAoJEH9FnL8hnhIWYZQA/2iMESVWI+w5m/kmBWwqF2XwuTwvNvJvZ6Zb
+fQMMPOZGAQC4munBGJIckvBxIdYtjohX5xUbmc5x3nzqc+aIj2k7ALg4BFzTI7ES
+CisGAQQBl1UBBQEBB0Ak+uasRNr95l8+UOovFzPJ1xMVgM5oUsEewWGbKcOjTQMB
+CAeIfgQYFggAJhYhBPBpqgKusiBZd1OfQn9FnL8hnhIWBQJc0yOxAhsMBQkDwz1v
+AAoJEH9FnL8hnhIWJjcA/Aq2E0SKtWf0kXHHRpElhte2WC8cwvmEd2fpc3Zpq7LD
+AQC9hslhkc25QUogXez1KJuxUp2Roj77oDajOHQNfHYRCg==
+=Slf8
 -----END PGP PUBLIC KEY BLOCK-----`;
 
   kbpgp.KeyManager.import_from_armored_pgp({
