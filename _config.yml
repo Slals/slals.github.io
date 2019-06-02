@@ -36,5 +36,6 @@ sass:
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
+  - jekyll-sitemap
 
 highlighter: rouge
