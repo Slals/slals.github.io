@@ -19,6 +19,9 @@
 
   .posts {
     flex: 1;
+    .link {
+      display: block;
+    }
     .title {
       h1 {
         display: inline-block;
@@ -34,27 +37,29 @@
   }
 
   .socials {
-    flex: 2;
-    .footer-icons {
-      display: flex;
-      .icon {
-        color: $main;
-        width: 20px;
-        height: 20px;
-        font-size: 20px;
-        padding: 10px;
-        margin: 5px;
-        border-radius: 50%;
-        border: 2px solid $main;
-        transition: all .33s;
-        &:hover {
-          color: #FFF;
-          background: $main;
-        }
-        &:active {
-          color: #FFF;
-          background: $main;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .sitemap-link {
+      padding-right: 10px;
+    }
+    .footer-icons .icon {
+      color: $main;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 50%;
+      border: 2px solid $main;
+      transition: all .33s;
+      &:hover {
+        color: #FFF;
+        background: $main;
+      }
+      &:active {
+        color: #FFF;
+        background: $main;
       }
     }
   }

@@ -6,7 +6,7 @@
         <a aria-label="Flux RSS" target="_blank" href="/feed.xml"><i class="icon fa fa-rss" aria-hidden="true"></i></a>
       </div>
       {% for post in site.posts limit:4 %}
-        <a class="link" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+        <a class="link" href="{{ post.url }}">{{ post.title }}</a>
       {% endfor %}
     </div>
     <div class="socials">
@@ -16,6 +16,7 @@
         <a aria-label="Sur Github" target="_blank" href="https://github.com/Slals"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
         <a aria-label="Sur Linkedin" target="_blank" href="https://www.linkedin.com/in/serrajonathan/"><i class="icon fa fa-linkedin" aria-hidden="true"></i></a>
       </div>
+      <a aria-label="Plan du site" class="link sitemap-link" href="/sitemap">Plan du site</a>
     </div>
   </div>
   <p class="copyright">{{ site.username }} &copy; 2019</p>
