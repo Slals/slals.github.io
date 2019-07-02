@@ -199,14 +199,14 @@ _Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bit
 
 D'abord vous devrez chercher les fichiers d'installation de Bitcoin, je vous le donne ici : [bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz](https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz). Gardez ce lien vous en aurez besoin.
 
-Je tiens à souligner que vous pouvez le chercher par vous même en vous rendant [ici](https://bitcoincore.org/en/download/) et en sélectionnant "ARM Linux 64bits". Je vous conseille de le faire vous même car les versions sont mises à jour, ci-dessus vous avez la version 0.17.1 de Bitcoin Core.
+Je tiens à souligner que vous pouvez le chercher par vous même en vous rendant [ici](https://bitcoincore.org/en/download/) et en sélectionnant "ARM Linux 64bits". Je vous conseille de le faire vous même car les versions sont mises à jour, ci-dessus vous avez la version 0.18.0 de Bitcoin Core.
 
 Suivez les commandes ci-dessous pour installer `bitcoind`
 
 {% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz\\
 tar -vxf bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz <i>Extraire les données de l'archive</i>\\
 sudo install -m 0755 -o bitcoin -g bitcoin -t /usr/local/bin bitcoin-0.17.1/bin/* \\
-rm -rf bitcoin-0.17.1" %}
+rm -rf bitcoin-0.18.0" %}
 
 Notez qu'on donne les droits uniquement à l'utilisateur `bitcoin`. Désormais tapez les commandes `bitcoind -version` et `bitcoin-cli -version`. Si tout est bien installé vous verrez les versions s'afficher.
 
