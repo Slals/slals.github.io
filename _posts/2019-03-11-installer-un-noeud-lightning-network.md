@@ -197,14 +197,14 @@ _Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bit
 
 `bitcoind` est le système central de Bitcoin, le "d" à la fin signifie "daemon" qui désigne un service exécuté et maintenu par la machine. `bitcoin-cli` est une interface de commande qui permet d’interagir avec le service Bitcoin. Les deux s'installent ensemble, ce qui est super !
 
-D'abord vous devrez chercher les fichiers d'installation de Bitcoin, je vous le donne ici : [bitcoin-0.17.1-aarch64-linux-gnu.tar.gz](https://bitcoincore.org/bin/bitcoin-core-0.17.1/bitcoin-0.17.1-aarch64-linux-gnu.tar.gz). Gardez ce lien vous en aurez besoin.
+D'abord vous devrez chercher les fichiers d'installation de Bitcoin, je vous le donne ici : [bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz](https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz). Gardez ce lien vous en aurez besoin.
 
 Je tiens à souligner que vous pouvez le chercher par vous même en vous rendant [ici](https://bitcoincore.org/en/download/) et en sélectionnant "ARM Linux 64bits". Je vous conseille de le faire vous même car les versions sont mises à jour, ci-dessus vous avez la version 0.17.1 de Bitcoin Core.
 
 Suivez les commandes ci-dessous pour installer `bitcoind`
 
-{% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoincore.org/bin/bitcoin-core-0.17.1/bitcoin-0.17.1-arm-linux-gnueabihf.tar.gz\\
-tar -vxf bitcoin-0.17.1-arm-linux-gnueabihf.tar.gz <i>Extraire les données de l'archive</i>\\
+{% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz\\
+tar -vxf bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz <i>Extraire les données de l'archive</i>\\
 sudo install -m 0755 -o bitcoin -g bitcoin -t /usr/local/bin bitcoin-0.17.1/bin/* \\
 rm -rf bitcoin-0.17.1" %}
 
