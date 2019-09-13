@@ -7,7 +7,7 @@ permalink: /:categories/:title
 
 # User settings
 username: Blocs
-user_description: Directeur technique et ingénieur logiciel en freelance
+user_description: Directeur technique et ingénieur logiciel freelance
 user_title: Ingénieur logiciel
 email: jonathan@blocs.fr
 twitter_username: cryptoblocs
@@ -17,6 +17,9 @@ collections:
   posts:
     output: true
     permalink: /articles/:title
+  projects:
+    output: true
+    permalink: /projects/:title
 
 twitter:
   username: cryptoblocs
@@ -32,6 +35,7 @@ google-analytics:
 
 sass:
   sass_dir: src/styles
+  style: compact
 
 plugins:
   - jekyll-seo-tag

@@ -1,3 +1,5 @@
+{% assign styles = include.styles | split: "," %}
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,4 +16,8 @@
 
   <link rel="stylesheet" href="{{ "/src/styles/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+
+  {% for s in styles %}
+    <link rel="stylesheet" href="{{ "/src/styles/" | append: s | prepend: site.baseurl }}">
+  {% endfor %}
 </head>

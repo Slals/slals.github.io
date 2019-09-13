@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+  {% include head.html styles=page.styles %}
+  <body>
+    {% include nav_blog.html %}
+    <div id="project">
+      <section class="content">
+        {{ content }}
+      </section>
+
+      <section class="contribute">
+        <p>
+          Ce projet est sous license <a href="https://creativecommons.org/licenses/?lang=fr-FR" target="_blank">Creative Commons BY-NC-SA</a>. Il est ouvert à contribution en vous rendant sur ce lien :         <a href="https://github.com/Slals/slals.github.io/tree/master/{{ page.path }}" target="_blank">{{ page.title }}</a>
+        </p>
+      </section>
+    </div>
+    {% include footer.html scripts=page.scripts %}
+  </body>
+</html>

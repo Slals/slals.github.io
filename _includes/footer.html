@@ -1,3 +1,5 @@
+{% assign scripts = include.scripts | split: "," %}
+
 <footer class="footer">
   <div class="content">
     <div class="posts">
@@ -26,5 +28,8 @@
   <script src="{{ "/assets/js/sweet-scroll.min.js" | prepend: site.baseurl }}"></script>
   <script src="{{ "/src/js/app.js" | prepend: site.baseurl }}"></script>
 {% endif %}
+{% for s in scripts %}
+  <script src="{{ "/src/js/" | append: s | prepend: site.baseurl }}"></script>
+{% endfor %}
 <script src="{{ "/src/js/nav.js" | prepend: site.baseurl }}"></script>
 {% include google-analytics.html %}

@@ -1,0 +1,46 @@
+---
+layout: project
+title: "Vanity address generator"
+description: "Generate a Bitcoin vanity address using only client side execution."
+scripts: "Base58/Base58.js,vangen.js,kjur-jsrsasign/jsrsasign-all-min.js"
+styles: "vangen.css"
+---
+
+<div>
+	<div>
+		<h1>Générateur d'adresses Bitcoin</h1>
+		<span class="faq"><a href="https://www.youtube.com/watch?v=-Bs-LKeMVsA" target="_blank">(Qu'est ce que c'est ?)</a></span>
+	</div>
+	<div>
+		<h2>Etape 1 : spécifiezs quel type d'adresse Bitcoin vous souhaitez</h2>
+		<form id="pattern-form">
+			<label>Mot présent au début de l'adresse</label>
+			<input type="text" name="pattern" onkeyup="onPatternChange(event)" maxlength="8" placeholder="sat0sh1" required />
+			<small>L'adresse devrait ressembler à <strong id="addr-preview">1QLbz7JHiBTspS962RLKV8GndWE</strong></small>
+
+			<div class="buttons">
+				<button onclick="generate(event, 5)" class="showoff-button blue" type="button"><span>Générer</span></button>
+				<button onclick="stop(event)" class="showoff-button" type="button"><span>Stop</span></button>
+			</div>
+		</form>
+		<!-- <p>
+			Temps approximatif : <span id="approx-time"></span>
+		</p>
+		<p>
+			Temps écoulé : <span id="timer"></span>
+		</p> -->
+	</div>
+
+	<div id="result">
+		<h2>Etape 2 : Calcule de la clé privée</h2>
+		<div class="group">
+			<label>Adresse publique trouvée</label>
+			<input type="text" value="" id="address" readonly />
+		</div>
+		<div id="privkey" class="group">
+			<label>Clé privée associée</label>
+			<input type="password" value="" onclick="this.select();" readonly />
+			<a href="#" onclick="showPrivKey(event)">Afficher la clé privée</a>
+		</div>
+	</div>
+</div>
