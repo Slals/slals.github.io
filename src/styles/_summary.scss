@@ -1,17 +1,19 @@
 .summary {
   display: flex;
+  flex-wrap: wrap-reverse;
   .intro {
-    flex: 2;
+    flex: 1;
     margin-right: 15px;
+    width: 400px;
   }
   .insert {
-    flex: 1;
     padding: 17px;
     background-color: #FFF;
     border-radius: 4px;
     box-shadow: 7px 10px 15px rgba(10, 10, 10, 0.2);
     border: 0.5px solid $sec;
     overflow: hidden;
+    max-width: 350px;
     h2 {
       color: $main !important;
       margin: 0;

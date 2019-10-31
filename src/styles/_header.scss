@@ -9,6 +9,13 @@
     object-fit: cover;
     width: 100%;
   }
+  .my-services {
+    position: absolute;
+    bottom: 0;
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .header {
@@ -96,7 +103,7 @@
 .down {
   color: #FFF;
   position: absolute;
-  bottom: 25px;
+  bottom: 50px;
   width: 100%;
   margin: 0 auto;
   display: block;

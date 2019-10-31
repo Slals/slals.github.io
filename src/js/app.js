@@ -48,7 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.attachEvent('onsubmit', callback);
   }
 
-  const sweetScroll = new SweetScroll({/* some options */});
+  const sweetScroll = new SweetScroll({
+    offset: -100,
+  });
 
   var pgpKey = `-----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: ID utilisateur:	Blocs <jonathan@blocs.fr>
@@ -86,7 +88,10 @@ function onServiceBtn(btn) {
   let services = document.querySelector('.services');
   let serviceInfo = document.querySelector('.services-info');
 
-  window.location.href = '#services';
+  setTimeout(function() {
+    const scroller = new SweetScroll();
+    scroller.to('#services');
+  }, 100);
 
   if (!btnValue) {
     services.classList.remove('hidden');
@@ -128,7 +133,8 @@ function onServiceIntBtn(btn) {
 
   document.querySelector('#filledMessage').style.display = 'block';
 
-  window.location.href = '#contact';
+  const scroller = new SweetScroll();
+  scroller.to('#contact');
 
   contactForm['email'].focus();
 }

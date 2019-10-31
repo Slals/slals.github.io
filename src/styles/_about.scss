@@ -3,9 +3,10 @@
   margin: 0 auto;
   max-width: 960px;
   min-height: 640px;
-  padding-bottom: 25px;
-  @media only screen and (min-width: $cut) {
+  padding-bottom: 75px;
+  @media only screen and (min-width: 769px) {
     width: 80%;
+    padding-bottom: 25px !important;
   }
 }
 
@@ -33,15 +34,18 @@
       display: block;
       width: auto;
     }
+    h2 {
+      color: $main;
+    }
   }
   .services-info {
     transform: rotateY(360deg);
   }
   .services {
-    .showoff-button {
+    .service .showoff-button {
       margin: 0 auto;
     }
-    @media only screen and (min-width: $cut) {
+    @media only screen and (min-width: 769px) {
       flex-wrap: nowrap;
       font-size: 75px;
     }
@@ -95,10 +99,14 @@
   }
   .showoff-button {
     margin-top: 10px;
+    max-height: 55px;
   }
 }
 
 .service-details {
   text-align: center;
   margin: 5px auto;
+  h1 {
+    color: $main;
+  }
 }
