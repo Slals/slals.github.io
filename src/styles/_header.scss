@@ -29,7 +29,7 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   h1.site-title {
-    font-size: 50px;
+    font-size: 30px;
     display: block;
     line-height: 1;
     color: #FFF;
@@ -37,21 +37,52 @@
     text-shadow: 7px 10px 15px rgba(10, 10, 10, 0.3);
     @media only screen and (min-width:$cut){
       margin: 0;
-      font-size: 75px;
+      font-size: 60px;
     }
   }
   h2.site-description {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 200;
-    display: block;
     line-height: 1;
     color: #FFF;
-    margin: 0; padding: 0;
-    margin-bottom: 40px;
-    margin-top: 18px;
+    margin: 0;
+    margin-top: 40px;
+    padding: 0;
     text-shadow: 7px 10px 15px rgba(10, 10, 10, 0.3);
     @media only screen and (min-width:$cut){
-      font-size: 38px;
+      font-size: 26px;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    &.cat {
+      margin-bottom: 40px;
+    }
+    &.jobs {
+      margin-top: 40px;
+    }
+    &.jobs li ~ li::before {
+      content: '\272D';
+      font-size: 25px;
+      padding: 0 10px;
+      font-weight: 200;
+    }
+    &.cat li ~ li::before {
+      content: '\203A';
+      font-size: 22px;
+      padding: 0 10px;
+      font-weight: 200;
+    }
+    li, li h3, li h2 {
+      display: inline-block;
+      padding: 0;
+      margin: 0 !important;
+    }
+    li h3 {
+      font-weight: 200;
+      font-size: 19px;
     }
   }
 }
@@ -111,23 +142,23 @@
   font-size: 30px;
   cursor: pointer;
   .icon {
-      position: absolute;
-      -webkit-transform-style: preserve-3d;
-      transform-style: preserve-3d;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
-      fill: #fff;
-      -webkit-animation: pulse 1.3s infinite;
-      animation: pulse 1.3s infinite;
-      &:hover {
-        color: $sec;
-      }
-      &:active {
-        color: $sec;
-      }
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    fill: #fff;
+    -webkit-animation: pulse 1.3s infinite;
+    animation: pulse 1.3s infinite;
+    &:hover {
+      color: $sec;
+    }
+    &:active {
+      color: $sec;
+    }
   }
 }

@@ -1,14 +1,14 @@
 # Site settings
 title: Blocs.fr
-description: Directeur technique et ingénieur logiciel en freelance
+description: Développeur Freelance Golang Docker React Blockchain. Parfait match pour un CTO (directeur technique) pour encadrer votre projet.
 image: /assets/img/prof_moi_500.png
 author: Jonathan Serra
 permalink: /:categories/:title
 
 # User settings
 username: Blocs
-user_description: Directeur technique et ingénieur logiciel freelance
-user_title: Ingénieur logiciel
+user_description: Développeur Freelance Golang Docker React Blockchain. Parfait match pour un CTO (directeur technique) pour encadrer votre projet.
+user_title: Développeur Freelance
 email: jonathan@blocs.fr
 twitter_username: cryptoblocs
 github_username: Slals
@@ -22,7 +22,7 @@ collections:
     permalink: /projects/:title
 
 twitter:
-  username: cryptoblocs
+  username: _blocs
   card: summary_large_image
 
 logo: /assets/img/logo.png
