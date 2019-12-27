@@ -1,17 +1,21 @@
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Comment: ID utilisateur:	Blocs <jonathan@blocs.fr>
-Comment: Créé:	08/05/2019 20:01
-Comment: Expire:	08/05/2021 12:00
-Comment: Type:	256-bit ECDSA (certificat secret disponible)
-Comment: Utilisation:	Signature, Certification des identifiants utilisateur, Authentification SSH
-Comment: Empreinte:	ABCC30B013B8F90E989F63E17EB4649AAA0808F0
+Comment: Créé:	27/12/2019 11:47
+Comment: Expire:	27/12/2021 12:00
+Comment: Type:	256-bit EdDSA (certificat secret disponible)
+Comment: Utilisation:	Signature, Chiffrement, Certification des identifiants utilisateur
+Comment: Empreinte:	9CB23434969792A79673535DB36D9B2711C2A6CA
 
 
-mFIEXNMZYRMIKoZIzj0DAQcCAwQn2teed8FpshWMFOsqiKgZxID+kgk27Dn45cvG
-LuboUXkwwbtrsIuShJVb7icxy/KnkiCqpABiKM89GbcSk7U9tBlCbG9jcyA8am9u
-YXRoYW5AYmxvY3MuZnI+iJYEExMIAD4WIQSrzDCwE7j5DpifY+F+tGSaqggI8AUC
-XNMZYQIbIwUJA8NHvwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRB+tGSaqggI
-8D/rAQCBYxMhn/2bZMHR1UppiRJVKn9hm8uFIwP2n725FOQ//AD9ECqwMWYt8xia
-KVtpbBJQ9ZkZiCqYa2xVUjS+BhXJOOk=
-=BsPv
+mDMEXgXhKhYJKwYBBAHaRw8BAQdAP9rhE/1rpJcBfMlgQRcb1QBU5Y6/xQIgECEy
++T9wx460GUJsb2NzIDxqb25hdGhhbkBibG9jcy5mcj6IlgQTFggAPhYhBJyyNDSW
+l5KnlnNTXbNtmycRwqbKBQJeBeEqAhsDBQkDw7uGBQsJCAcCBhUKCQgLAgQWAgMB
+Ah4BAheAAAoJELNtmycRwqbKa1oBAJ8G8or46oKhGtJR4Q9Bng5XrJnweZM+A9YS
+rC8E6aFfAQDVt/jsOZqG23BVnnu/vmThDOUue+LmB2OgMkk3I+GBBLhWBF4F4SoS
+CCqGSM49AwEHAgMEaQoSJJPyaw6Zz2Z+jHxEaJiQ10f678rXyP7899k4sn1v1yPA
+YQQQSvTEb1sh0Heu0oHvIB2rvpJzDWQZwFrEvAMBCAeIfgQYFggAJhYhBJyyNDSW
+l5KnlnNTXbNtmycRwqbKBQJeBeEqAhsMBQkDw7uGAAoJELNtmycRwqbKPJ8BAO3c
+nZguxL+JzKDHLkx8ety5zQYHZLpbffqu9IKZdNnuAQDv9ANpC0RnrE+zB/WW1Jj7
+KUXV9SfFWkEIKDv7k/OUCA==
+=zNYw
 -----END PGP PUBLIC KEY BLOCK-----
