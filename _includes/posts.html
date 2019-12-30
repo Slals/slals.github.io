@@ -4,6 +4,9 @@
       <img src="{{ post.image }}" alt="{{ post.title }}" />
       <div class="overview-content">
         <h2 class="title">{{ post.title }}</h2>
+        <p class="date">
+          Dernières modifications le {% include date_localize.html date=post.date %}
+        </p>
         <p>{{ post.description }}</p>
         <a class="link" href="{{ post.url }}" target="_blank">Voir l'article...</a>
       </div>

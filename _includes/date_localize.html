@@ -1,0 +1,20 @@
+{% assign m = include.date | date: "%-m" %}
+{% case m %}
+  {% when '1' %}{% assign m = 'janvier' %}
+  {% when '2' %}{% assign m = 'février' %}
+  {% when '3' %}{% assign m = 'mars' %}
+  {% when '4' %}{% assign m = 'avril' %}
+  {% when '5' %}{% assign m = 'mai' %}
+  {% when '6' %}{% assign m = 'juin' %}
+  {% when '7' %}{% assign m = 'juillet' %}
+  {% when '8' %}{% assign m = 'août' %}
+  {% when '9' %}{% assign m = 'septembre' %}
+  {% when '10' %}{% assign m = 'octobre' %}
+  {% when '11' %}{% assign m = 'novembre' %}
+  {% when '12' %}{% assign m = 'décembre' %}
+{% endcase %}
+
+{% assign d = include.date | date: "%-d" %}
+{% assign y = include.date | date: "%Y" %}
+
+<span>{{ d }} {{ m }} {{ y }}</span>

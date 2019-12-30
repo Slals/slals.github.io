@@ -33,6 +33,10 @@
     }
     .overview-content p {
       font-size: 12pt;
+      &.date {
+        font-style: italic;
+        font-size: 9pt;
+      }
       @media only screen and (max-width: 414px) {
         text-overflow: "-";
         overflow: hidden;

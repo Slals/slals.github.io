@@ -7,6 +7,10 @@ image_bg: "/assets/img/thumbnail/conf_node.jpg"
 categories: [linux,bitcoin]
 ---
 
+<p>
+  <b>Dernières modifications le {% include date_localize.html date=page.date %}</b>
+</p>
+
 {% include summary.html intro="<a href='/articles/installer-un-noeud-lightning-network' target='_blank'>Dans l'article précédent</a> j'ai écrit au sujet de l'installation d'un nœud Bitcoin Lightning Network avec un Raspberry Pi. Ce dernier est sommaire et va à l'essentiel. Dans cet article il va s'agir d'optimiser la configuration du Raspberry Pi afin d'améliorer sa sécurité et rendre l'administration moins laborieuse."
 sum="<a href='#fixer-ip'>Fixer l'adresse IP locale du nœud</a>\\
 <a href='#securiser-ssh'>Sécuriser les accès distants SSH</a>\\

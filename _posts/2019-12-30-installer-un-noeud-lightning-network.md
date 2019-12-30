@@ -7,6 +7,10 @@ image_bg: "/assets/img/thumbnail/lnd.jpg"
 categories: [linux,bitcoin]
 ---
 
+<p>
+  <b>Dernières modifications le {% include date_localize.html date=page.date %}</b>
+</p>
+
 {% include summary.html intro="Avoir son propre nœud Lightning Network (LN) permet d'avoir un grand contrôle sur les transactions au sein du réseau. Lorsque vous voulez effectuer une transaction LN vous avez deux choix :<br />
 - Dépendre d'un nœud de tiers et dépendre de ses canaux de paiement ;<br />
 - Avoir son nœud et gérer ses propres canaux avec d'autres nœuds ;<br /><br />
@@ -197,16 +201,16 @@ _Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bit
 
 `bitcoind` est le système central de Bitcoin, le "d" à la fin signifie "daemon" qui désigne un service exécuté et maintenu par la machine. `bitcoin-cli` est une interface de commande qui permet d’interagir avec le service Bitcoin. Les deux s'installent ensemble, ce qui est super !
 
-D'abord vous devrez chercher les fichiers d'installation de Bitcoin, je vous le donne ici : [bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz](https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz). Gardez ce lien vous en aurez besoin.
+D'abord vous devrez chercher les fichiers d'installation de Bitcoin, je vous le donne ici : [bitcoin-0.19.0.1-arm-linux-gnueabihf.tar.gz](https://bitcoin.org/bin/bitcoin-core-0.19.0.1/bitcoin-0.19.0.1-arm-linux-gnueabihf.tar.gz). Gardez ce lien vous en aurez besoin.
 
-Je tiens à souligner que vous pouvez le chercher par vous même en vous rendant [ici](https://bitcoincore.org/en/download/) et en sélectionnant "ARM Linux 64bits". Je vous conseille de le faire vous même car les versions sont mises à jour, ci-dessus vous avez la version 0.18.0 de Bitcoin Core.
+Je tiens à souligner que vous pouvez le chercher par vous même en vous rendant [ici](https://bitcoincore.org/en/download/) et en sélectionnant "ARM Linux 64bits". Je vous conseille de le faire vous même car les versions sont mises à jour, ci-dessus vous avez la version 0.19.0.1 de Bitcoin Core.
 
 Suivez les commandes ci-dessous pour installer `bitcoind`
 
-{% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoincore.org/bin/bitcoin-core-0.18.0/bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz\\
-tar -vxf bitcoin-0.18.0-arm-linux-gnueabihf.tar.gz <i>Extraire les données de l'archive</i>\\
-sudo install -m 0755 -o bitcoin -g bitcoin -t /usr/local/bin bitcoin-0.17.1/bin/* \\
-rm -rf bitcoin-0.18.0" %}
+{% include terminal.html title="Installer bitcoind et bitcoin-cli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://bitcoin.org/bin/bitcoin-core-0.19.0.1/bitcoin-0.19.0.1-arm-linux-gnueabihf.tar.gz\\
+tar -vxf bitcoin-0.19.0.1-arm-linux-gnueabihf.tar.gz <i>Extraire les données de l'archive</i>\\
+sudo install -m 0755 -o bitcoin -g bitcoin -t /usr/local/bin bitcoin-0.19.0.1/bin/* \\
+rm -rf bitcoin-0.19.0.1" %}
 
 Notez qu'on donne les droits uniquement à l'utilisateur `bitcoin`. Désormais tapez les commandes `bitcoind -version` et `bitcoin-cli -version`. Si tout est bien installé vous verrez les versions s'afficher.
 
@@ -264,14 +268,14 @@ _Pour cette partie restez connecté à l'utilisateur `bitcoin` en tapant `su bit
 
 `lnd` est le service qui va transformer le RaspberryPi en un nœud Lightning Network. Il va se connecter automatiquement a l'interface de commande du service `bitcoind`. Tout comme `bitcoind` LND embarque l'interface de commande `lncli`.
 
-La procédure pour installer LND ressemble à l'installation de Bitcoin. La première chose à faire est de télécharger le service en vous rendant sur ce lien [github.com/lightningnetwork/lnd/releases](https://github.com/lightningnetwork/lnd/releases). Ici vous trouverez toutes les versions officielles de LND. Récupérez maintenant le lien de la dernière version "linux-armv7", voici celle que j'ai à l'heure où j'écris cet article [lnd-linux-armv7-v0.6-beta.tar.gz](https://github.com/lightningnetwork/lnd/releases/download/v0.6-beta/lnd-linux-armv7-v0.6-beta.tar.gz).
+La procédure pour installer LND ressemble à l'installation de Bitcoin. La première chose à faire est de télécharger le service en vous rendant sur ce lien [github.com/lightningnetwork/lnd/releases](https://github.com/lightningnetwork/lnd/releases). Ici vous trouverez toutes les versions officielles de LND. Récupérez maintenant le lien de la dernière version "linux-armv7", voici celle que j'ai à l'heure où j'écris cet article [lnd-linux-armv7-v0.8.2-beta.tar.gz](https://github.com/lightningnetwork/lnd/releases/download/v0.8.2-beta/lnd-linux-armv7-v0.8.2-beta.tar.gz).
 
-Notez bien que mon exemple s'applique pour la version que j'ai envoyée : v0.6beta.
+Notez bien que mon exemple s'applique pour la version que j'ai envoyée : v0.8.2beta.
 
-{% include terminal.html title="Installer lnd et lncli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://github.com/lightningnetwork/lnd/releases/download/v0.6-beta/lnd-linux-armv7-v0.6-beta.tar.gz\\
-tar -vxf lnd-linux-armv7-v0.6-beta.tar.gz <i>Extraire les données de l'archive</i>\\
-sudo install -m 0755 -o bitcoin -g bitcoin -t /user/local/bin lnd-linux-armv7-v0.6-beta/bin/* \\
-rm -rf lnd-linux-armv7-v0.6-beta" %}
+{% include terminal.html title="Installer lnd et lncli" prompt="bitcoin@raspberrypi:~ $" commands="wget https://github.com/lightningnetwork/lnd/releases/download/v0.8.2-beta/lnd-linux-armv7-v0.8.2-beta.tar.gz\\
+tar -vxf lnd-linux-armv7-v0.8.2-beta.tar.gz <i>Extraire les données de l'archive</i>\\
+sudo install -m 0755 -o bitcoin -g bitcoin -t /user/local/bin lnd-linux-armv7-v0.8.2-beta/* \\
+rm -rf lnd-linux-armv7-v0.8.2-beta" %}
 
 Désormais tapez la commande `lnd -version`. Si tout est bien installé vous verrez la version s'afficher.
 
@@ -284,7 +288,7 @@ maxpendingchannels=3
 alias=<Votre Alias / pseudonyme / nom / ...>
 color=<Une couleur en hexadécimal, par exemple #F00 pour Rouge vif>
 
-nat=true
+nat=true # Si vous vous connectez depuis une box Internet
 
 [Bitcoin]
 bitcoin.active=1
