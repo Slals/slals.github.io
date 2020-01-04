@@ -188,3 +188,5 @@ Et enfin pour l'activer `systemctl enable lnd`.
 Félicitations, votre Raspberry est autonome, il relancera les services en cas de redémarrage inopiné, sans votre aide, tout seul comme un grand.
 
 Dans un article futur on va voir comment on peut administrer son nœud avec une interface graphique !
+
+{% include comments.html %}
