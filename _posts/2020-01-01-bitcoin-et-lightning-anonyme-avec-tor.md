@@ -217,3 +217,5 @@ Intéressez vous à la partie d'en bas, `"uris"`, qui est une liste des adresses
 Vérifications faites, vous êtes cachés, bravo !
 
 Merci à [Clint](https://twitter.com/clint_network) pour ses infos sur Tor et [JohnOnChain](https://twitter.com/JohnOnChain) pour m'avoir aidé à la configuration de lnd avec Tor.
+
+{% include comments.html %}

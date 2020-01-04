@@ -7,8 +7,8 @@
         <p class="date">
           Dernières modifications le {% include date_localize.html date=post.date %}
         </p>
-        <p>{{ post.description }}</p>
-        <a class="link" href="{{ post.url }}" target="_blank">Voir l'article...</a>
+        <p class="description">{{ post.description }}</p>
+        <a class="link" href="{{ post.url }}" target="_blank">Voir l'article →</a>
       </div>
     </li>
 {% endfor %}
