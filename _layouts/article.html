@@ -12,8 +12,15 @@
     </div>
     <div id="article">
       <section class="content">
+        <p>
+          <b>Dernières modifications le {% include date_localize.html date=page.date %}</b>
+        </p>
+        
         {{ content }}
+
+        {% include comments.html %}
       </section>
+
 
       <section class="contribute">
         <p>

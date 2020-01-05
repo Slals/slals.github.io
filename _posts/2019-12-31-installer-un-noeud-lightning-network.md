@@ -7,10 +7,6 @@ image_bg: "/assets/img/thumbnail/lnd.jpg"
 categories: [linux,bitcoin]
 ---
 
-<p>
-  <b>Dernières modifications le {% include date_localize.html date=page.date %}</b>
-</p>
-
 {% include summary.html intro="Avoir son propre nœud Lightning Network (LN) permet d'avoir un grand contrôle sur les transactions au sein du réseau. Lorsque vous voulez effectuer une transaction LN vous avez deux choix :<br />
 - Dépendre d'un nœud de tiers et dépendre de ses canaux de paiement ;<br />
 - Avoir son nœud et gérer ses propres canaux avec d'autres nœuds ;<br /><br />
@@ -368,5 +364,3 @@ Ma clé publique est `03a2c34daf010b3501daf704b5a321e82e1631421b7ffa18dd49014967
 ---
 
 Vous êtes maintenant propriétaire d'un nœud Bitcoin et d'un nœud Lightning Network. Cela signifie que vous avez la capacité d'utiliser n'importe quel portefeuille supportant LN en passant par votre propre serveur. Félicitations et bienvenue dans la communauté de l'a... Bitcoin et LN. Dans un article suivant on va voir comment avoir une interface graphique pour gérer son nœud sans passer par les lignes de commande comme nous l'avons fait tout au long de l'installation. Pour l'heure vous pouvez découvrir les possibilités de LN en tapant `lncli --help` et les possibilités de Bitcoin en tapant `bitcoin-cli --help`.
-
-{% include comments.html %}

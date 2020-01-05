@@ -7,10 +7,6 @@ image_bg: "/assets/img/thumbnail/tor_bitcoind_lnd.png"
 categories: [linux,bitcoin,lnd,tor]
 ---
 
-<p>
-  <b>Dernières modifications le {% include date_localize.html date=page.date %}</b>
-</p>
-
 {% include summary.html
   intro="Vous avez un nœud Bitcoin et Lightning Network, vous participez à la décentralisation du réseau, bravo ! Cependant il réside un point noir, en particulier si votre noeud est localisé chez vous ou votre bureau... En connaissant votre adresse IP, publiée par le nœud, il est possible de vous localiser. C'est sensible dans le cas où vous y mettez pour l'équivalent de milliers d'euros en bitcoins, une personne mal intentionnée pourrait vous pirater voire vous cambrioler. Heureusement, grâce à Tor vous allez pouvoir cacher tout cela en un temps record"
 sum="<a href='#tor-il-tord'>Qu'est ce que Tor ? Pourquoi Tor ?</a>\\
@@ -217,5 +213,3 @@ Intéressez vous à la partie d'en bas, `"uris"`, qui est une liste des adresses
 Vérifications faites, vous êtes cachés, bravo !
 
 Merci à [Clint](https://twitter.com/clint_network) pour ses infos sur Tor et [JohnOnChain](https://twitter.com/JohnOnChain) pour m'avoir aidé à la configuration de lnd avec Tor.
-
-{% include comments.html %}

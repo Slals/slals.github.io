@@ -178,6 +178,11 @@
       padding-right: 15px;
     }
   }
+  .preview {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
   #isso-root {
     .avatar {
       margin: 0;
@@ -185,5 +190,17 @@
     .author {
       color: #FFF;
     }
+  }
+}
+.comments {
+  h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  p {
+    margin-top: 0;
+  }
+  i {
+    font-size: 14px;
   }
 }
