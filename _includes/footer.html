@@ -21,11 +21,13 @@
       <a aria-label="Plan du site" class="link sitemap-link" href="/sitemap">Plan du site</a>
     </div>
   </div>
-  <p class="copyright">{{ site.username }} &copy; 2019 <a href="https://github.com/Slals/aphorismes" class="link" target="_blank">:)</a></p>
+  <p class="copyright">{{ site.username }} &copy; 2020 <a href="https://github.com/Slals/aphorismes" class="link" target="_blank">:)</a></p>
 </footer>
 {% if include.loadScripts %}
   <script src="{{ "/assets/js/kbpgp.js" | prepend: site.baseurl }}"></script>
   <script src="{{ "/assets/js/sweet-scroll.min.js" | prepend: site.baseurl }}"></script>
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6Les6NEUAAAAABsSgY48uKI81n48PIKS9S8UBIwr"></script>
   <script src="{{ "/src/js/app.js" | prepend: site.baseurl }}"></script>
 {% endif %}
 {% for s in scripts %}

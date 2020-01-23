@@ -2,9 +2,7 @@
 ---
 
 document.addEventListener("DOMContentLoaded", function () {
-  let callback = function (e) {
-    e.preventDefault();
-
+  let sendEmail = function () {
     document.querySelector('.send-btn').classList.add('loading');
 
     const message = contactForm['message'].value;
@@ -20,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     xmlhttp.open("POST", "https://email-now.jonathanserra.now.sh");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
 
+    const email = contactForm['email'].value;
+    const greToken = contactForm['gre-token'].value;
+
     if (contactForm['doesEncrypt'].checked) {
       const params = {
         msg: message,
@@ -28,24 +29,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
       kbpgp.box(params, function(err, resString, resBuffer) {
         if (!err) {
-          xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message: resString }));
+          xmlhttp.send(JSON.stringify({ email, greToken, message: resString }));
         } else {
-          console.log(err);
           document.querySelector('#sendContact').innerHTML =
             '<p class="error">Echec lors du chiffrement du message, ce message n\'a pas été envoyé</p>';
         }
       });
     } else {
-      xmlhttp.send(JSON.stringify({ email: contactForm['email'].value, message }));
+      xmlhttp.send(JSON.stringify({ email, greToken, message }));
     }
+  }
+
+  let submitEvt = function(e) {
+    e.preventDefault();
+    sendEmail();
   }
 
   let contactForm = document.forms['contactForm'];
 
   if (contactForm.addEventListener){
-    contactForm.addEventListener("submit", callback, false);
+    contactForm.addEventListener("submit", submitEvt, false);
   } else if(contactForm.attachEvent){
-    contactForm.attachEvent('onsubmit', callback);
+    contactForm.attachEvent('onsubmit', submitEvt);
   }
 
   const sweetScroll = new SweetScroll({
@@ -80,6 +85,13 @@ KUXV9SfFWkEIKDv7k/OUCA==
     if (!err) {
       window.PGP = cryptoblocs;
     }
+  });
+
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6Les6NEUAAAAABsSgY48uKI81n48PIKS9S8UBIwr')
+      .then(function(token) {
+        contactForm['gre-token'].value = token;
+      });
   });
 });
 
