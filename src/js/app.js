@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (this.readyState == 4 && this.status == 200) {
         document.querySelector('#sendContact').innerHTML =
         '<p class="success">Votre message a bien été envoyé, je vous répondrais dans les plus brefs délais.</p>';
+      } else {
+        document.querySelector('#sendContact').innerHTML =
+          '<p class="error">Votre message n\'est pas arrivé à bon port :( Je résouds le soucis revenez plus tard.</p>';
       }
     };
 
