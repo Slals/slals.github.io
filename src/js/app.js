@@ -88,7 +88,7 @@ KUXV9SfFWkEIKDv7k/OUCA==
   });
 
   grecaptcha.ready(function() {
-    grecaptcha.execute('6Les6NEUAAAAABsSgY48uKI81n48PIKS9S8UBIwr')
+    grecaptcha.execute('6Leu79EUAAAAAORaKUe6GqN-1lO1o5i4ITdZE9cO')
       .then(function(token) {
         contactForm['gre-token'].value = token;
       });
